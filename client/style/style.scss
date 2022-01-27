@@ -1,0 +1,90 @@
+/* =========== css变量 =========== */
+
+/* 文字基本颜色 */
+$Q-text-color:#333333; //基本色
+$Q-header-text-color:#333333; //模块头部文本色
+$Q-text-color-grey:#999999; //辅助灰色
+$Q-color-deep-grey:#666666; //辅助灰色
+$Q-btn-text-color:#FFFFFF; //基础按钮文本色
+$Q-gradual-text-color:#FFFFFF; //渐变文本色
+$Q-action-color:#007AFF; //功能文字文本色
+$Q-top-color: #FFFFFF; //置顶文本色
+$Q-login-color: #FFFFFF; //登录页文本色
+$Q-num-color: #000000; //大数字文本色
+$Q-price-color: #FF6146; //大数字文本色
+
+
+/* 背景颜色 */
+$Q-cont-bg:#FFFFFF; //主背景色
+$Q-cont-bg-grey:#F7F7F7; //辅助背景色
+$Q-search-bg:#F5F5F5; //搜索背景色
+$Q-nav-bg:#FFFFFF; //nav背景色
+$Q-nav-on:#333333; //nav选中状态
+$Q-btn-bg:#FF6146; //功能按钮背景色
+$Q-light-btn-bg:#FFFFFF; //辅助功能按钮背景色
+$Q-wide-btn-bg:#000000; //大按钮背景色
+$Q-tag-bg:#F5F5F5; //tag背景色
+$Q-tag-on-bg:#AAAAAA; //tag选中背景色
+$Q-copy-bg: #FBFBFB; //版权背景色
+$Q-top-bg: #000000; //置顶背景色
+
+/* 边框颜色 */
+$Q-border-color:#DDDDDD; //基础边框色
+$Q-border-BD-color:#E6E6E6; //基础边框色(百度)
+$Q-mbtn-border-color:#CCCCCC; //辅助小按钮边框色
+$Q-wide-border-color:#F5F5F5; //宽边边框色
+$Q-tab-on-color:#000000; //tab选中色
+$Q-copy-border:#EEEEEE; //版权背景色
+$Q-login-border-color: #FFFFFF; //登录页文本色
+
+
+
+
+/* 文字粗细 */
+$Q-header-weight:600; //模块头部信息
+$Q-text-weight:300; //通用文字粗细
+$Q-rich-text-weight:400; //帖子文字粗细
+$Q-tab-weight:300; //tab默认
+$Q-strong-weight:600; //强化文字粗细
+$Q-tab-over-weight:600; //tab悬停
+$Q-list-title-weight:600; //列表标题文字粗细
+$Q-strong-btn-weight:600; //强化按钮文字粗细
+
+
+/* 文字尺寸 */
+$Q-text-size:30rpx; //通用文字字号
+$Q-medium-size:28rpx; //辅助项目字号
+$Q-sub-info-size:26rpx; //辅助项目字号
+$Q-mini-size:24rpx; //辅助文字字号
+$Q-copy-size:24rpx; //版权文字字号
+$Q-view-info-size:26rpx; //文章辅助信息字号
+$Q-tab-size:28rpx; //tab默认字号
+$Q-big-size:32rpx; //大号文字字号
+$Q-max-size:36rpx; //大号数字字号
+$Q-icon-text-size:28rpx; //图标文字字号
+$Q-my-icon-text-size:26rpx; //我的图标文字字号
+$Q-list-title-size:28rpx; //列表标题字号
+$Q-tab-over-size:32rpx; //tab悬停字号
+$Q-top-size:18rpx; //置顶字号
+$Q-notice-size:22rpx; //顶部通知字号
+
+
+
+/* 边框尺寸 */
+$Q-border-size:1rpx; //基础边框尺寸
+$Q-wide-border-size:24rpx; //宽边边框尺寸
+
+/* 边框圆角 */
+$Q-radio:6rpx; //基础圆角
+
+
+/* 图片尺寸 */
+
+/* 水平间距 */
+
+/* 垂直间距 */
+
+/* 透明度 */
+
+/* 文章场景相关 */
+	

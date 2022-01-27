@@ -1,0 +1,81 @@
+{
+    "id": "zhuige-scoremall",
+    "name": "追格积分商城小程序（含后端）",
+    "version": "1.0.2",
+    "description": "追格积分商城小程序（开源版）是一款基于 WordPress+UniApp 开发的积分商城小程序，简单的配置即可发布到微信小程序，模块化设置，简单易用！",
+    "keywords": [
+        "追格",
+        "WordPress",
+        "积分商城"
+    ],
+    "displayName": "追格积分商城小程序（含后端）",
+    "repository": "https://gitee.com/longwenjunj/zhuige_scoremall",
+    "engines": {
+        "HBuilderX": "^3.3.5"
+    },
+    "dcloudext": {
+        "category": [
+            "前端页面模板",
+            "uni-app前端项目模板"
+        ],
+        "sale": {
+            "regular": {
+                "price": "0.00"
+            },
+            "sourcecode": {
+                "price": "0.00"
+            }
+        },
+        "contact": {
+            "qq": ""
+        },
+        "declaration": {
+            "ads": "无",
+            "data": "无",
+            "permissions": "无"
+        },
+        "npmurl": ""
+    },
+    "uni_modules": {
+        "platforms": {
+            "cloud": {
+                "tcb": "y",
+                "aliyun": "y"
+            },
+            "client": {
+                "App": {
+                    "app-vue": "u",
+                    "app-nvue": "u"
+                },
+                "H5-mobile": {
+                    "Safari": "u",
+                    "Android Browser": "u",
+                    "微信浏览器(Android)": "u",
+                    "QQ浏览器(Android)": "u"
+                },
+                "H5-pc": {
+                    "Chrome": "u",
+                    "IE": "u",
+                    "Edge": "u",
+                    "Firefox": "u",
+                    "Safari": "u"
+                },
+                "小程序": {
+                    "微信": "y",
+                    "阿里": "u",
+                    "百度": "y",
+                    "字节跳动": "u",
+                    "QQ": "y"
+                },
+                "快应用": {
+                    "华为": "u",
+                    "联盟": "u"
+                },
+                "Vue": {
+                    "vue2": "u",
+                    "vue3": "u"
+                }
+            }
+        }
+    }
+}
