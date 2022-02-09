@@ -22,12 +22,15 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 		));
 	}
 
-	public static function get_datas($per_page = 5, $page_number = 1)
+	public static function get_datas($per_page = 5, $page_number = 1, $search = null)
 	{
-
 		global $wpdb;
 
-		$sql = "SELECT * FROM {$wpdb->prefix}zhuige_scoremall_score_order";
+		$sql = "SELECT * FROM {$wpdb->prefix}zhuige_scoremall_score_order WHERE 1=1";
+
+		if ($search) {
+			$sql .= " AND `trade_no` LIKE '%" . $search . "%'";
+		}
 
 		if (!empty($_REQUEST['orderby'])) {
 			$sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
@@ -50,6 +53,7 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 		$columns = array(
 			'cb'        => '<input type="checkbox" />', // Render a checkbox instead of text.
 			'id'		    => 'ID',
+			'trade_no'		=> '订单号',
 			'user'	    	=> '用户',
 			'goods'			=> '商品',
 			'remark'		=> '备注',
@@ -74,6 +78,7 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 	{
 		switch ($column_name) {
 			case 'id':
+			case 'trade_no':
 			case 'remark':
 				return $item[$column_name];
 			default:
@@ -140,7 +145,7 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 
 	protected function column_createtime($item)
 	{
-		return date("Y-m-d H:i:s", $item['createtime']);
+		return wp_date("Y-m-d H:i:s", $item['createtime']);
 	}
 
 	protected function get_bulk_actions()
@@ -168,11 +173,11 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 			$page = wp_unslash($_REQUEST['page']);
 			$query = ['page' => $page];
 			$redirect = add_query_arg($query, admin_url('admin.php'));
-			echo '<script>window.location.href="' . $redirect . '"</script>';
+			echo '<script>window.location.href="' . esc_url($redirect) . '"</script>';
 		}
 	}
 
-	function prepare_items()
+	function prepare_items($search = null)
 	{
 		$columns  = $this->get_columns();
 		$hidden   = array();
@@ -183,9 +188,9 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 
 		$per_page = 10;
 		$current_page = $this->get_pagenum();
-		$total_items  = self::record_count();
+		$total_items  = $this->record_count($search);
 
-		$this->items = $this->get_datas($per_page, $current_page);
+		$this->items = $this->get_datas($per_page, $current_page, $search);
 
 		$this->set_pagination_args(array(
 			'total_items' => $total_items,                     // WE have to calculate the total number of items.
@@ -216,12 +221,27 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 		return ('asc' === $order) ? $result : -$result;
 	}
 
-	public static function record_count()
+	public function record_count($search)
 	{
 		global $wpdb;
 
-		$sql = "SELECT COUNT(*) FROM {$wpdb->prefix}zhuige_scoremall_score_order";
+		$sql = "SELECT COUNT(*) FROM {$wpdb->prefix}zhuige_scoremall_score_order WHERE 1=1";
+
+		if ($search) {
+			$sql .= " AND `trade_no` LIKE '%" . $search . "%'";
+		}
 
 		return $wpdb->get_var($sql);
+	}
+
+	/**
+	 * 修改表格样式
+	 */
+	protected function get_table_classes() {
+		$mode = get_user_setting( 'posts_list_mode', 'list' );
+
+		$mode_class = esc_attr( 'table-view-' . $mode );
+
+		return array( 'widefat', 'striped', $mode_class, $this->_args['plural'] );
 	}
 }

@@ -65,4 +65,8 @@ module.exports = {
 	 */
 	ZG_SCOREMALL_USER_LOGIN: makeURL('user', 'login'),
 	
+	/**
+	 * 我的积分
+	 */
+	ZG_SCOREMALL_USER_SCORE: makeURL('user', 'score'),
 };

@@ -64,9 +64,6 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		if (!$post_id) {
 			return $this->make_error('缺少参数');
 		}
-
-		// //设置时区 修复8小时
-		// date_default_timezone_set("Asia/Shanghai");
 		
 		$postObj = get_post($post_id);
 
@@ -147,6 +144,10 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 			return $this->make_error('请勿输入敏感信息');
 		}
 
+		$stock = (int)(ZhuiGe_ScoreMall::post_goods_property($post_id, 'stock', 0));
+		if ($stock < 1) {
+			return $this->make_error('库存不足');
+		}
 
 		$my_score = (int)(get_user_meta($my_user_id, 'zhuige_score', true));
 		$goods_price = (int)(ZhuiGe_ScoreMall::post_goods_property($post_id, 'price', 0));
@@ -160,8 +161,9 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		$goods_name = $postObj->post_title;
 
 		global $wpdb;
-
+		$trade_no = 'ZG_' . $my_user_id . '_' . time();
 		$wpdb->insert("{$wpdb->prefix}zhuige_scoremall_score_order", [
+			'trade_no' => $trade_no,
 			'user_id' => $my_user_id,
 			'goods_id' => $post_id,
 			'goods_image' => $goods_image,
@@ -185,11 +187,8 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		]);
 
 		$options = get_post_meta($post_id, 'zhuige-jq_goods-opt', true);
-		if($options) {
-			$options['quantity'] = (int)($options['quantity']) + 1;
-		} else {
-			$options['quantity'] = 1;
-		}
+		$options['quantity'] = (int)($options['quantity']) + 1;
+		$options['stock'] = (int)($options['stock']) - 1;
 		update_post_meta($post_id, 'zhuige-jq_goods-opt', $options);
 
 		return $this->make_success('');
@@ -207,12 +206,12 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 
 		$offset = $this->param_value($request, 'offset', 0);
 
-		//设置时区 修复8小时
-		date_default_timezone_set("Asia/Shanghai");
-
 		global $wpdb;
 		$table_score_order = $wpdb->prefix . 'zhuige_scoremall_score_order';
 		$orders = $wpdb->get_results("SELECT * FROM `$table_score_order` WHERE `user_id`=$my_user_id ORDER BY `id` DESC LIMIT $offset, " . ZhuiGe_ScoreMall::POSTS_PER_PAGE, ARRAY_A);
+		foreach ($orders as &$order) {
+			$order['createtime'] = date('Y.m.d', $order['createtime']);
+		}
 
 		return $this->make_success(['more' => count($orders) == ZhuiGe_ScoreMall::POSTS_PER_PAGE ? 'more' : 'nomore', 'orders' => $orders]);
 	}

@@ -50,6 +50,7 @@ class ZhuiGe_ScoreMall_Activator
         $table_score_order = $wpdb->prefix . 'zhuige_scoremall_score_order';
         $sql = "CREATE TABLE IF NOT EXISTS `$table_score_order` (
             `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+            `trade_no` varchar(50) NOT NULL DEFAULT '' COMMENT '订单号',
             `user_id` bigint(20) NOT NULL COMMENT '用户',
             `goods_id` bigint(20) UNSIGNED NOT NULL COMMENT '商品ID',
             `goods_image` varchar(255) NOT NULL COMMENT '商品图片',

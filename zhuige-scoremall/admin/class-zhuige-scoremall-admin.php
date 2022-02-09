@@ -100,8 +100,16 @@ class ZhuiGe_ScoreMall_Admin
                     'default' => '1',
                 ),
 
+				array(
+                    'id'      => 'stock',
+                    'type'    => 'number',
+                    'title'   => '库存',
+                    'unit'    => '套',
+                    'default' => '100',
+                ),
+
                 array(
-                    'id'      => 'quantity ',
+                    'id'      => 'quantity',
                     'type'    => 'number',
                     'title'   => '销量',
                     'unit'    => '套',

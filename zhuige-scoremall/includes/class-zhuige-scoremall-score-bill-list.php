@@ -22,12 +22,15 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 		));
 	}
 
-	public static function get_datas($per_page = 5, $page_number = 1)
+	public static function get_datas($per_page = 5, $page_number = 1, $search = null)
 	{
-
 		global $wpdb;
 
-		$sql = "SELECT * FROM {$wpdb->prefix}zhuige_scoremall_score_bills";
+		$sql = "SELECT * FROM {$wpdb->prefix}zhuige_scoremall_score_bills WHERE 1=1";
+
+		if ($search) {
+			$sql .= " AND `user_id`=$search";
+		}
 
 		if (!empty($_REQUEST['orderby'])) {
 			$sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
@@ -96,7 +99,7 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 
 	protected function column_nickname($item)
 	{
-		return get_user_meta($item['user_id'], 'nickname', true);
+		return get_user_meta($item['user_id'], 'nickname', true) . '(' . $item['user_id'] . ')';
 	}
 
 	protected function column_total($item)
@@ -115,7 +118,7 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 
 	protected function column_time($item)
 	{
-		return date("Y-m-d H:i:s", $item['time']);
+		return wp_date("Y-m-d H:i:s", $item['time']);
 	}
 
 	protected function get_bulk_actions()
@@ -143,11 +146,11 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 			$page = wp_unslash($_REQUEST['page']);
 			$query = ['page' => $page];
 			$redirect = add_query_arg($query, admin_url('admin.php'));
-			echo '<script>window.location.href="' . $redirect . '"</script>';
+			echo '<script>window.location.href="' . esc_url($redirect) . '"</script>';
 		}
 	}
 
-	function prepare_items()
+	function prepare_items($search = null)
 	{
 		$columns  = $this->get_columns();
 		$hidden   = array();
@@ -158,9 +161,9 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 
 		$per_page = 10;
 		$current_page = $this->get_pagenum();
-		$total_items  = self::record_count();
+		$total_items  = $this->record_count($search);
 
-		$this->items = $this->get_datas($per_page, $current_page);
+		$this->items = $this->get_datas($per_page, $current_page, $search);
 
 		$this->set_pagination_args(array(
 			'total_items' => $total_items,                     // WE have to calculate the total number of items.
@@ -191,11 +194,15 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 		return ('asc' === $order) ? $result : -$result;
 	}
 
-	public static function record_count()
+	public function record_count($search)
 	{
 		global $wpdb;
 
-		$sql = "SELECT COUNT(*) FROM {$wpdb->prefix}zhuige_scoremall_score_bills";
+		$sql = "SELECT COUNT(*) FROM {$wpdb->prefix}zhuige_scoremall_score_bills WHERE 1=1";
+
+		if ($search) {
+			$sql .= " AND `user_id`=$search";
+		}
 
 		return $wpdb->get_var($sql);
 	}

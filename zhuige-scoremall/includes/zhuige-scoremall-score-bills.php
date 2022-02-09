@@ -34,20 +34,34 @@ function zhuige_scoremall_add_score_bills_menu() {
 }
 
 function zhuige_scoremall_render_score_bills() {
-	// Create an instance of our package class.
 	$score_bill_list = new ZhuiGe_ScoreMall_Score_Bill_List();
-
-	// Fetch, prepare, sort, and filter our data.
-	$score_bill_list->prepare_items();
+	$search = isset($_GET['s']) ? $_GET['s'] : '';
+	$score_bill_list->prepare_items($search);
 ?>
 	<div class="wrap">
-		<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+		<h1 class="wp-heading-inline"><?php echo esc_html(get_admin_page_title()); ?></h1>
 
-		<!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
+		<?php
+		if (strlen($search)) {
+			echo '<span class="subtitle">';
+			printf(
+				__('Search results for: %s'),
+				'<strong>' . esc_html($search) . '</strong>'
+			);
+			echo '</span>';
+		}
+		?>
+		<hr class="wp-header-end">
+
+		<?php $score_bill_list->views(); ?>
+
+		<form method="get">
+			<input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>" />
+			<?php $score_bill_list->search_box('搜索', 'search_id'); ?>
+		</form>
+
 		<form id="movies-filter" method="get">
-			<!-- For plugins, we also need to ensure that the form posts back to our current page -->
-			<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-			<!-- Now we can render the completed list table -->
+			<input type="hidden" name="page" value="<?php echo esc_attr($_REQUEST['page']) ?>" />
 			<?php $score_bill_list->display() ?>
 		</form>
 	</div>

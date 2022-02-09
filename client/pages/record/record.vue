@@ -22,7 +22,12 @@
 						</view>
 					</view>
 				</view>
+				<view class="zhuige-exchange-footer">
+					<view>订单号：{{item.trade_no}}</view>
+					<view>{{item.createtime}}</view>
+				</view>
 			</view>
+			
 			<uni-load-more :status="loadMore"></uni-load-more>
 		</template>
 		<template v-else>
@@ -125,10 +130,11 @@
 	.zhuige-exchange-contact {
 		display: flex;
 		align-items: center;
+		border-bottom: 1rpx solid #DDDDDD;
 	}
 
 	.zhuige-exchange-contact-info {
-		padding: 20rpx;
+		padding: 10rpx;
 	}
 
 	.zhuige-exchange-contact-info view {
@@ -138,6 +144,13 @@
 
 	.zhuige-exchange-contact-info view:nth-child(2),
 	.zhuige-exchange-contact-info view:nth-child(3) {
+		color: #999999;
+	}
+	
+	.zhuige-exchange-footer {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 10rpx;
 		color: #999999;
 	}
 </style>

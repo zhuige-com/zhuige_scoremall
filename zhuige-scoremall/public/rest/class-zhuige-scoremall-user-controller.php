@@ -18,6 +18,7 @@ class ZhuiGe_ScoreMall_User_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		$this->module = 'user';
 		$this->routes = [
 			'login' => 'user_login',
+			'score' => 'get_score',
 		];
 	}
 
@@ -90,6 +91,23 @@ class ZhuiGe_ScoreMall_User_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		);
 
 		return $this->make_success($user);
+	}
+
+	/**
+	 * 获取当前用户积分
+	 */
+	public function get_score($request)
+	{
+		$my_user_id = get_current_user_id();
+
+		//我的积分
+		$my_score = 0;
+		if ($my_user_id) {
+			$my_score = (int)(get_user_meta($my_user_id, 'zhuige_score', true));
+		}
+		$data['my_score'] = $my_score;
+
+		return $this->make_success($data);
 	}
 
 	/**

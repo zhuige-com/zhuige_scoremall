@@ -35,9 +35,12 @@
 			<view class="zhuige-point-store-box">
 				<view class="zhuige-point-store-title">
 					<view>积分好货</view>
-					<view v-if="my_score">
+					<view v-if="is_login" @click="clickMyScore">
 						我的积分
 						<text>{{my_score}}</text>
+					</view>
+					<view v-else @click="clickLogin">
+						登录查看积分
 					</view>
 				</view>
 				<view class="zhuige-point-store-list">
@@ -80,6 +83,8 @@
 				goods_list: [],
 				loadMore: 'more',
 				loaded: false,
+				
+				is_login: false,
 			};
 		},
 
@@ -90,6 +95,18 @@
 		onLoad(options) {
 			this.loadSetting();
 			this.loadGoods();
+		},
+		
+		onShow() {
+			this.is_login = !!(Auth.getUser());
+			
+			if (this.is_login) {
+				Rest.post(Api.ZG_SCOREMALL_USER_SCORE).then(res => {
+					this.my_score = res.data.my_score;
+				}, err => {
+					console.log(err)
+				});
+			}
 		},
 
 		onShareAppMessage() {
@@ -126,6 +143,14 @@
 		methods: {
 			clickLink(link) {
 				Util.openLink(link);
+			},
+			
+			clickMyScore() {
+				Util.openLink('/pages/page/page?page_id=2812');
+			},
+			
+			clickLogin() {
+				Util.openLink('/pages/login/login');
 			},
 
 			refresh() {

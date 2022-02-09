@@ -122,11 +122,11 @@ function zhuige_scoremall_render_score_order() {
 					</tr>
 					<tr>
 						<th scope="row"><label for="express_type">快递类型</label></th>
-						<td><input type="text" class="regular-text" name="express_type" id="express_type" value="<?php echo $order['express_type']; ?>"></td>
+						<td><input type="text" class="regular-text" name="express_type" id="express_type" value="<?php echo esc_attr($order['express_type']) ?>"></td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="express_no">快递单号</label></th>
-						<td><input type="text" class="regular-text" name="express_no" id="express_no" value="<?php echo $order['express_no']; ?>"></td>
+						<td><input type="text" class="regular-text" name="express_no" id="express_no" value="<?php echo esc_attr($order['express_no']) ?>"></td>
 					</tr>
 				</table>
 				<p class="submit">
@@ -136,20 +136,34 @@ function zhuige_scoremall_render_score_order() {
 		</div>
 <?php
 	} else {
-		// Create an instance of our package class.
 		$score_order_list = new ZhuiGe_ScoreMall_Score_Order_List();
-
-		// Fetch, prepare, sort, and filter our data.
-		$score_order_list->prepare_items();
+		$search = isset($_GET['s']) ? $_GET['s'] : '';
+		$score_order_list->prepare_items($search);
 ?>
 		<div class="wrap">
-			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+			<h1 class="wp-heading-inline"><?php echo esc_html(get_admin_page_title()); ?></h1>
 
-			<!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
+			<?php
+			if (strlen($search)) {
+				echo '<span class="subtitle">';
+				printf(
+					__('Search results for: %s'),
+					'<strong>' . esc_html($search) . '</strong>'
+				);
+				echo '</span>';
+			}
+			?>
+			<hr class="wp-header-end">
+
+			<?php $score_order_list->views(); ?>
+
+			<form method="get">
+				<input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>" />
+				<?php $score_order_list->search_box('搜索', 'search_id'); ?>
+			</form>
+
 			<form id="movies-filter" method="get">
-				<!-- For plugins, we also need to ensure that the form posts back to our current page -->
-				<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-				<!-- Now we can render the completed list table -->
+				<input type="hidden" name="page" value="<?php echo esc_attr($_REQUEST['page']) ?>" />
 				<?php $score_order_list->display() ?>
 			</form>
 		</div>

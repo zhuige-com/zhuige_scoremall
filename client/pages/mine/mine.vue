@@ -16,7 +16,7 @@
 			<view v-if="user" class="zhuige-list-block" @click="clickMyOrder">
 				<view class="zhuige-base-list">
 					<view class="zhuige-list-img">
-						<image src="/static/images/icon_about.png" mode="aspectFill"></image>
+						<image src="/static/images/icon_mall.png" mode="aspectFill"></image>
 					</view>
 					<view class="zhuige-list-info">
 						<view class="zhuige-list-title">我的订单</view>
