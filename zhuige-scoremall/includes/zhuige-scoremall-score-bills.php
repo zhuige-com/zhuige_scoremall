@@ -35,7 +35,7 @@ function zhuige_scoremall_add_score_bills_menu() {
 
 function zhuige_scoremall_render_score_bills() {
 	$score_bill_list = new ZhuiGe_ScoreMall_Score_Bill_List();
-	$search = isset($_GET['s']) ? $_GET['s'] : '';
+	$search = isset($_GET['s']) ? sanitize_text_field(wp_unslash($_GET['s'])) : '';
 	$score_bill_list->prepare_items($search);
 ?>
 	<div class="wrap">

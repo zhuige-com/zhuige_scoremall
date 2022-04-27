@@ -29,7 +29,7 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 		$sql = "SELECT * FROM {$wpdb->prefix}zhuige_scoremall_score_bills WHERE 1=1";
 
 		if ($search) {
-			$sql .= " AND `user_id`=$search";
+			$sql .= $wpdb->prepare(" AND `user_id`=%d", $search);
 		}
 
 		if (!empty($_REQUEST['orderby'])) {
@@ -39,9 +39,9 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 			$sql .= ' ORDER BY time DESC';
 		}
 
-		$sql .= " LIMIT $per_page";
-		$sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
-
+		// $sql .= " LIMIT $per_page";
+		// $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
+		$sql .= $wpdb->prepare(" LIMIT %d OFFSET %d", $per_page, ($page_number - 1) * $per_page);
 
 		$result = $wpdb->get_results($sql, 'ARRAY_A');
 
@@ -132,10 +132,10 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 
 	protected function process_bulk_action()
 	{
-		$action = isset($_GET['action']) ? $_GET['action'] : '';
+		$action = isset($_GET['action']) ? sanitize_text_field(wp_unslash($_GET['action'])) : '';
 		if ('bulk_delete' == $action) {
 			if (isset($_GET['bill_ids'])) {
-				$bill_ids = $_GET['bill_ids'];
+				$bill_ids = sanitize_text_field(wp_unslash($_GET['bill_ids']));
 
 				global $wpdb;
 				foreach ($bill_ids as $bill_id) {
@@ -201,7 +201,7 @@ class ZhuiGe_ScoreMall_Score_Bill_List extends WP_List_Table
 		$sql = "SELECT COUNT(*) FROM {$wpdb->prefix}zhuige_scoremall_score_bills WHERE 1=1";
 
 		if ($search) {
-			$sql .= " AND `user_id`=$search";
+			$sql .= $wpdb->prepare(" AND `user_id`=%d", $search);
 		}
 
 		return $wpdb->get_var($sql);

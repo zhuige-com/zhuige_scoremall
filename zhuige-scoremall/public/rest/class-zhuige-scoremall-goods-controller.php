@@ -32,7 +32,7 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 	 */
 	public function get_last($request)
 	{
-		$offset = $this->param_value($request, 'offset', 0);
+		$offset = (int)($this->param_value($request, 'offset', 0));
 
 		$args = [
 			'post_type' => ['jq_goods'],
@@ -60,7 +60,7 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 	 */
 	public function get_detail($request)
 	{
-		$post_id = $this->param_value($request, 'post_id');
+		$post_id = (int)($this->param_value($request, 'post_id'));
 		if (!$post_id) {
 			return $this->make_error('缺少参数');
 		}
@@ -90,7 +90,7 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 	 */
 	public function pre_exchange($request)
 	{
-		$post_id = $this->param_value($request, 'post_id');
+		$post_id = (int)($this->param_value($request, 'post_id'));
 		if (!$post_id) {
 			return $this->make_error('缺少参数');
 		}
@@ -118,7 +118,7 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 			return $this->make_error('还没有登陆', -1);
 		}
 
-		$post_id = $this->param_value($request, 'post_id');
+		$post_id = (int)($this->param_value($request, 'post_id'));
 		if (!$post_id) {
 			return $this->make_error('缺少参数');
 		}
@@ -204,11 +204,15 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 			return $this->make_error('还没有登陆', -1);
 		}
 
-		$offset = $this->param_value($request, 'offset', 0);
+		$offset = (int)($this->param_value($request, 'offset', 0));
 
 		global $wpdb;
 		$table_score_order = $wpdb->prefix . 'zhuige_scoremall_score_order';
-		$orders = $wpdb->get_results("SELECT * FROM `$table_score_order` WHERE `user_id`=$my_user_id ORDER BY `id` DESC LIMIT $offset, " . ZhuiGe_ScoreMall::POSTS_PER_PAGE, ARRAY_A);
+		$orders = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT * FROM `$table_score_order` WHERE `user_id`=%d ORDER BY `id` DESC LIMIT %d, %d", $my_user_id, $offset, ZhuiGe_ScoreMall::POSTS_PER_PAGE
+			),
+		ARRAY_A);
 		foreach ($orders as &$order) {
 			$order['createtime'] = date('Y.m.d', $order['createtime']);
 		}

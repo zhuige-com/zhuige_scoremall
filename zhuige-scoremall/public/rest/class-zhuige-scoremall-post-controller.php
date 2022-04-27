@@ -26,15 +26,18 @@ class ZhuiGe_ScoreMall_Post_Controller extends ZhuiGe_ScoreMall_Base_Controller
 	 */
 	public function get_page($request)
 	{
-		$page_id = $this->param_value($request, 'page_id');
-		$page_id = (int)$page_id;
+		$page_id = (int)($this->param_value($request, 'page_id'));
 		if (!$page_id) {
 			return $this->make_error('缺少参数');
 		}
 
 		global $wpdb;
 		$table_post = $wpdb->prefix . 'posts';
-		$result = $wpdb->get_row($wpdb->prepare("SELECT post_title, post_content FROM `$table_post` WHERE ID=%d", $page_id));
+		$result = $wpdb->get_row(
+			$wpdb->prepare(
+				"SELECT post_title, post_content FROM `$table_post` WHERE ID=%d", $page_id
+			)
+		);
 		if (!$result) {
 			return $this->make_error('未找到文章');
 		}

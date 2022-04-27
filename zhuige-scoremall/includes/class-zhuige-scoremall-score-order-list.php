@@ -29,7 +29,7 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 		$sql = "SELECT * FROM {$wpdb->prefix}zhuige_scoremall_score_order WHERE 1=1";
 
 		if ($search) {
-			$sql .= " AND `trade_no` LIKE '%" . $search . "%'";
+			$sql .= " AND `trade_no` LIKE '%" . esc_sql($search) . "%'";
 		}
 
 		if (!empty($_REQUEST['orderby'])) {
@@ -39,9 +39,9 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 			$sql .= ' ORDER BY createtime DESC';
 		}
 
-		$sql .= " LIMIT $per_page";
-		$sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
-
+		// $sql .= " LIMIT $per_page";
+		// $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
+		$sql .= $wpdb->prepare(" LIMIT %d OFFSET %d", $per_page, ($page_number - 1) * $per_page);
 
 		$result = $wpdb->get_results($sql, 'ARRAY_A');
 
@@ -159,10 +159,10 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 
 	protected function process_bulk_action()
 	{
-		$action = isset($_GET['action']) ? $_GET['action'] : '';
+		$action = isset($_GET['action']) ? sanitize_text_field(wp_unslash($_GET['action'])) : '';
 		if ('bulk_delete' == $action) {
 			if (isset($_GET['order_ids'])) {
-				$order_ids = $_GET['order_ids'];
+				$order_ids = sanitize_text_field(wp_unslash($_GET['order_ids']));
 
 				global $wpdb;
 				foreach ($order_ids as $order_id) {
@@ -228,7 +228,7 @@ class ZhuiGe_ScoreMall_Score_Order_List extends WP_List_Table
 		$sql = "SELECT COUNT(*) FROM {$wpdb->prefix}zhuige_scoremall_score_order WHERE 1=1";
 
 		if ($search) {
-			$sql .= " AND `trade_no` LIKE '%" . $search . "%'";
+			$sql .= " AND `trade_no` LIKE '%" . esc_sql($search) . "%'";
 		}
 
 		return $wpdb->get_var($sql);
