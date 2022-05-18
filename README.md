@@ -64,7 +64,7 @@ PS：下载包中含前后端源代码！
 
 官网下载：[www.zhuige.com](https://www.zhuige.com/product/jf.html)
 
-gitee下载：[gitee.com/longwenjunj/zhuige_scoremall](https://gitee.com/longwenjunj/zhuige_scoremall)
+gitee下载：[gitee.com/longwenjunj/zhuige_scoremall](https://gitee.com/zhuige_com/zhuige_scoremall)
 
 
 ## 安装使用

@@ -9,7 +9,7 @@
         "积分商城"
     ],
     "displayName": "追格积分商城小程序（含后端）",
-    "repository": "https://gitee.com/longwenjunj/zhuige_scoremall",
+    "repository": "https://gitee.com/zhuige_com/zhuige_scoremall",
     "engines": {
         "HBuilderX": "^3.2.16"
     },

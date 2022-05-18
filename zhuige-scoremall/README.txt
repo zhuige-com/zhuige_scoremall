@@ -47,9 +47,9 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 官网下载：[www.zhuige.com](https://www.zhuige.com/download.html)
 
-github下载：https://github.com/longwenjunjie/zhuige_scoremall
+github下载：https://github.com/zhuige-com/zhuige_scoremall
 
-gitee下载（优先更新）：https://gitee.com/longwenjunj/zhuige_scoremall
+gitee下载（优先更新）：https://gitee.com/zhuige_com/zhuige_scoremall
 
 == Screenshots ==
 
