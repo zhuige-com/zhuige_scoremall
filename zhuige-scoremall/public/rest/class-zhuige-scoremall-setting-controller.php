@@ -48,6 +48,21 @@ class ZhuiGe_ScoreMall_Setting_Controller extends ZhuiGe_ScoreMall_Base_Controll
 		}
 		$data['my_score'] = $my_score;
 
+		// 幻灯片
+		$slides_org = ZhuiGe_ScoreMall::option_value('home_slide');
+		$slides = [];
+		if (is_array($slides_org)) {
+			foreach ($slides_org as $item) {
+				if ($item['switch'] && $item['image'] && $item['image']['url']) {
+					$slides[] = [
+						'image' => $item['image']['url'],
+						'link' => $item['link'],
+					];
+				}
+			}
+		}
+		$data['slides'] = $slides;
+
 		//图标导航
 		$icon_nav_org = ZhuiGe_ScoreMall::option_value('home_nav');
 		$icon_navs = [];

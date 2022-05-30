@@ -25,6 +25,32 @@ CSF::createSection($prefix, array(
         ),
 
         array(
+            'id'     => 'home_slide',
+            'type'   => 'group',
+            'title'  => '幻灯片',
+            'fields' => array(
+                array(
+                    'id'      => 'image',
+                    'type'    => 'media',
+                    'title'   => '图片',
+                    'library' => 'image',
+                ),
+                array(
+                    'id'       => 'link',
+                    'type'     => 'text',
+                    'title'    => '链接',
+                    'default'  => 'https://www.zhuige.com',
+                ),
+                array(
+                    'id'    => 'switch',
+                    'type'  => 'switcher',
+                    'title' => '开启/停用',
+                    'default' => '1'
+                ),
+            ),
+        ),
+
+        array(
             'id'     => 'home_nav',
             'type'   => 'group',
             'title'  => '导航项',

@@ -64,7 +64,7 @@ PS：下载包中含前后端源代码！
 
 官网下载：[www.zhuige.com](https://www.zhuige.com/product/jf.html)
 
-gitee下载：[gitee.com/longwenjunj/zhuige_scoremall](https://gitee.com/zhuige_com/zhuige_scoremall)
+gitee下载：[gitee.com/zhuige_com/zhuige_scoremall](https://gitee.com/zhuige_com/zhuige_scoremall)
 
 
 ## 安装使用
@@ -75,11 +75,6 @@ gitee下载：[gitee.com/longwenjunj/zhuige_scoremall](https://gitee.com/zhuige_
 *本项目依赖 WordPress rest api 功能，请确保其正常*
 
 
-## 更新日志
-
-2022-01-09 v1.0.0
-
-
 ## 开源协议
 
 遵循GPL V2.0开源协议发布（协议连接 [www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)）
@@ -88,13 +83,6 @@ gitee下载：[gitee.com/longwenjunj/zhuige_scoremall](https://gitee.com/zhuige_
 ## 免责声明
 
 用户在接受追格服务之前，请务必仔细阅读 [本条款](https://www.zhuige.com/about/5.html) 并同意本声明
-
-
-## 特别声明
-
-黑灰产请绕行！
-
-如果发现有人使用本程序从事违法活动，将即可向公安机关举报，并协助破案！
 
 
 ## 特别鸣谢

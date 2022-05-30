@@ -1,5 +1,15 @@
 <template>
 	<view class="content">
+		<view v-if="slides && slides.length>0" class="zhuige-swiper">
+			<swiper indicator-dots="true" autoplay="autoplay" circular="ture"
+				indicator-color="rgba(255,255,255, 0.3)" indicator-active-color="rgba(255,255,255, 0.8)"
+				interval="5000" duration="150" easing-function="linear">
+				<swiper-item v-for="(slide, index) in slides" :key="index" @click="clickLink(slide.link)">
+					<image :src="slide.image" mode="aspectFill"></image>
+				</swiper-item>
+			</swiper>
+		</view>
+		
 		<view v-if="icon_navs.length>0" class="jiangqie-icon-block">
 			<view v-for="(item,index) in icon_navs" :key="index" @click="clickLink(item.link)"
 				class="jiangqie-custom-icon">
@@ -73,6 +83,8 @@
 	export default {
 		data() {
 			return {
+				slides: [],
+				
 				icon_navs: [],
 
 				my_score: undefined,
@@ -165,6 +177,7 @@
 					getApp().globalData.appName = res.data.title;
 					getApp().globalData.appDesc = res.data.desc;
 
+					this.slides = res.data.slides;
 					this.icon_navs = res.data.icon_navs;
 
 					this.my_score = res.data.my_score;
@@ -199,13 +212,23 @@
 <style lang="scss">
 	@import "@/style/style.scss";
 
-	page,
-	.content {
+	page, .content {
 		background: #F5F5F5;
 	}
 
 	.content {
-		padding: 30rpx 0;
+		padding-bottom: 30rpx;
+	}
+	
+	.zhuige-swiper {
+		margin-bottom: 30rpx;
+	}
+	
+	.zhuige-swiper swiper, .zhuige-swiper swiper-item, .zhuige-swiper image {
+		height: 400rpx;
+		width: 100%;
+		// overflow: hidden;
+		// border-radius: 12rpx;
 	}
 
 	.jiangqie-icon-block {
