@@ -82,6 +82,8 @@
 
 	export default {
 		data() {
+			this.share_thumb = undefined;
+			
 			return {
 				slides: [],
 				
@@ -89,8 +91,6 @@
 
 				my_score: undefined,
 				events: undefined,
-
-				share_thumb: undefined,
 
 				goods_list: [],
 				loadMore: 'more',

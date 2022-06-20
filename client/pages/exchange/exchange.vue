@@ -40,9 +40,9 @@
 
 	export default {
 		data() {
+			this.goods_id = 0;
+			
 			return {
-				goods_id: 0,
-
 				goods: undefined,
 
 				addressee: '',

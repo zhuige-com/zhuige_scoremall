@@ -2,7 +2,7 @@
     "name" : "zhuige-scoremall",
     "appid" : "",
     "description" : "",
-    "versionName" : "1.1.0",
+    "versionName" : "1.1.5",
     "versionCode" : "100",
     "transformPx" : false,
     /* 5+App特有相关 */
@@ -50,7 +50,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wx330d4c92336035d2",
         "setting" : {
             "urlCheck" : false
         },
@@ -61,7 +61,7 @@
     },
     "mp-baidu" : {
         "usingComponents" : true,
-        "appid" : "",
+        "appid" : "24089226",
         "setting" : {
             "urlCheck" : false
         }
@@ -73,7 +73,7 @@
         "enable" : false
     },
     "mp-qq" : {
-        "appid" : "",
+        "appid" : "1111962158",
         "setting" : {
             "urlCheck" : false
         }
