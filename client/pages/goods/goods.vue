@@ -84,8 +84,12 @@
 				Rest.post(Api.ZG_SCOREMALL_GOODS_DETAIL, {
 					post_id: this.goods_id
 				}).then(res => {
-					this.goods = res.data;
-
+					if (res.code == 0) {
+						this.goods = res.data;
+					} else {
+						Alert.toast(res.msg);
+					}
+					
 					uni.stopPullDownRefresh();
 				}, err => {
 					console.log(err)

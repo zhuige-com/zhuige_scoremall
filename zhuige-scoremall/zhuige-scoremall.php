@@ -4,7 +4,7 @@
  * Plugin Name:		追格积分商城Free
  * Plugin URI:		https://www.zhuige.com/product/jf.html
  * Description:		让Wordpress快速变身积分商城小程序。
- * Version:			1.1.5
+ * Version:			1.1.6
  * Author:			追格
  * Author URI:		https://www.zhuige.com/
  * License:			GPLv2 or later
@@ -16,7 +16,7 @@ if (!defined('WPINC')) {
 	die;
 }
 
-define('ZHUIGE_SCOREMALL_VERSION', '1.1.5');
+define('ZHUIGE_SCOREMALL_VERSION', '1.1.6');
 define('ZHUIGE_SCOREMALL_BASE_DIR', plugin_dir_path(__FILE__));
 define('ZHUIGE_SCOREMALL_BASE_NAME', plugin_basename(__FILE__));
 define('ZHUIGE_SCOREMALL_BASE_URL', plugin_dir_url(__FILE__));

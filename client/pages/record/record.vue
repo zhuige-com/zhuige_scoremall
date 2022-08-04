@@ -2,7 +2,7 @@
 	<view class="content">
 		<template v-if="orders.length>0">
 			<view v-for="(item,index) in orders" :key="index" class="zhuige-exchange">
-				<view class="zhuige-exchange-goods">
+				<view class="zhuige-exchange-goods" @click="clickLink('/pages/goods/goods?goods_id=' + item.goods_id)">
 					<image :src="item.goods_image" mode="aspectFill"></image>
 					<view class="zhuige-exchange-info">
 						<view>{{item.goods_name}}</view>

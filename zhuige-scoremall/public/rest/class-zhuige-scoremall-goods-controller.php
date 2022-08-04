@@ -66,6 +66,9 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		}
 		
 		$postObj = get_post($post_id);
+		if (!$postObj) {
+			return $this->make_error('商品不存在~');
+		}
 
 		$post = [
 			'id' => $postObj->ID,
