@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "商品详情",
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "mp-html": "/components/mp-html/mp-html"
-  }
-}

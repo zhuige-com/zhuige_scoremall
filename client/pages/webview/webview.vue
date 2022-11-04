@@ -18,26 +18,12 @@
 			}
 		},
 
-		onShareAppMessage() {
+		onShareAppMessage(options) {
 			return {
 				title: getApp().globalData.appName,
-				path: 'pages/webview/webview?src=' + encodeURIComponent(this.src)
+				path: 'pages/webview/webview?src=' + encodeURIComponent(options.webViewUrl)
 			};
-		},
-
-		// #ifdef MP-WEIXIN
-		onShareTimeline() {
-			return {
-				title: getApp().globalData.appName
-			};
-		},
-
-		onAddToFavorites(res) {
-			return {
-				title: getApp().globalData.appName
-			};
-		},
-		// #endif
+		}
 	}
 </script>
 

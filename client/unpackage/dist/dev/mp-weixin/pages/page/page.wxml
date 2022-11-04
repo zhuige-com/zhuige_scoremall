@@ -1,1 +1,0 @@
-<view class="content"><block wx:if="{{post}}"><view class="content-wrapper"><mp-html vue-id="aca5f140-1" content="{{post.content}}" bind:__l="__l"></mp-html></view></block></view>

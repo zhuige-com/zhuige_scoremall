@@ -1,8 +1,8 @@
-![追格积分商城小程序（开源版）](https://www.zhuige.com/ad/zhuige_scoremall/preview.png) 
+![追格积-分商城小程序（开源版）](https://www.zhuige.com/ad/zhuige_scoremall/preview.png) 
 
 ## 小程序介绍
 
-追格积分商城小程序（开源版）是一款基于 WordPress+UniApp 开发的积分商城小程序，简单的配置即可发布到微信小程序，模块化设置，简单易用！
+追格积-分商城小程序（开源版）是一款基于 WordPress+UniApp 开发的积-分商城小程序，简单的配置即可发布到微信小程序，模块化设置，简单易用！
 
 
 #### 微信：**jianbing2011**（加微信，进微信群交流）
@@ -20,7 +20,7 @@
 
 4. 追格企业官网主题：[https://www.zhuige.com/product/gwztfree.html](https://www.zhuige.com/product/gwztfree.html)
 
-5. 追格积分商城小程序：[https://www.zhuige.com/product/jf.html](https://www.zhuige.com/product/jf.html)
+5. 追格积-分商城小程序：[https://www.zhuige.com/product/jf.html](https://www.zhuige.com/product/jf.html)
 
 6. 追格商城小程序：[https://www.zhuige.com/product/sc.html](https://www.zhuige.com/product/sc.html)
 
@@ -35,11 +35,11 @@
 
 4. 支持登录页背景图、logo、标题、用户协议等设置；
 
-5. 支持积分账单、兑换订单管理；
+5. 支持积-分账单、兑换订单管理；
 
-6. 支持后端发布积分商品产品；
+6. 支持后端发布积-分商品产品；
 
-7. 支持编辑用户积分数；
+7. 支持编辑用户积-分数；
 
 8. 更多等你发现。
 
@@ -87,7 +87,7 @@ gitee下载：[gitee.com/zhuige_com/zhuige_scoremall](https://gitee.com/zhuige_c
 
 ## 特别鸣谢
 
-我们借助了开源的力量，才得以快速构建出追格积分商城小程序，在此特别感谢他们（排名不分先后）：
+我们借助了开源的力量，才得以快速构建出追格积-分商城小程序，在此特别感谢他们（排名不分先后）：
 
 1. https://cn.wordpress.org
 
