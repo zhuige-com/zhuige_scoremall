@@ -1,7 +1,7 @@
 <template>
 	<view class="content" :style="background?'background: url(' + background + ') no-repeat;':''">
 		<!-- 用户头像及信息 -->
-		<view v-if="user" class="zhuige-user-info">
+		<view v-if="user" class="zhuige-user-info" @click="clickVerify">
 			<image :src="user.avatar" mode="aspectFill"></image>
 			<view>{{user.nickname}}</view>
 		</view>
@@ -129,6 +129,10 @@
 		},
 
 		methods: {
+			clickVerify() {
+				Util.openLink('/pages/verify/verify');
+			},
+			
 			clickLogin() {
 				if (Auth.getUser()) {
 					return;

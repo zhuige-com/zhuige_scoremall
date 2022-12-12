@@ -231,6 +231,7 @@ class ZhuiGe_ScoreMall
 		require_once ZHUIGE_SCOREMALL_BASE_DIR . 'public/rest/class-zhuige-scoremall-post-controller.php';
 		require_once ZHUIGE_SCOREMALL_BASE_DIR . 'public/rest/class-zhuige-scoremall-user-controller.php';
 		require_once ZHUIGE_SCOREMALL_BASE_DIR . 'public/rest/class-zhuige-scoremall-goods-controller.php';
+		require_once ZHUIGE_SCOREMALL_BASE_DIR . 'public/rest/class-zhuige-scoremall-other-controller.php';
 
 		/**
 		 * 后台管理
@@ -279,6 +280,7 @@ class ZhuiGe_ScoreMall
 			new ZhuiGe_ScoreMall_Post_Controller(),
 			new ZhuiGe_ScoreMall_User_Controller(),
 			new ZhuiGe_ScoreMall_Goods_Controller(),
+			new ZhuiGe_ScoreMall_Other_Controller(),
 		];
 		foreach ($controller as $control) {
 			$this->loader->add_action('rest_api_init', $control, 'register_routes');

@@ -69,4 +69,15 @@ module.exports = {
 	 * 我的积分
 	 */
 	ZG_SCOREMALL_USER_SCORE: makeURL('user', 'score'),
+	
+	/**
+	 * 设置信息
+	 */
+	ZG_SCOREMALL_USER_SET_INFO: makeURL('user', 'set_info'),
+	
+	/**
+	 * 上传图片
+	 */
+	ZG_SCOREMALL_OTHER_UPLOAD: makeURL('other', 'upload'),
+	
 };

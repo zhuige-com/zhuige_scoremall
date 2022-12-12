@@ -53,6 +53,12 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "pages/verify/verify",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
 		}
 	],
 	/*主题换色时注意调整配置颜色，同时在后台替换相应配色的tab-bar图标*/

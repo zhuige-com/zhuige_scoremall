@@ -11,18 +11,22 @@
 				<view class="jiangqie-login-tip">H5平台尚未适配</view>
 				<!-- #endif -->
 
-				<!-- #ifdef MP-WEIXIN -->
+				<!-- #ifdef MP-WEIXIN || MP-QQ || MP-BAIDU -->
 				<view v-if="code" class="jiangqie-button" @click="clickLogin()">授权登录</view>
 				<!-- #endif -->
 
 				<!-- #ifdef MP-QQ || MP-BAIDU -->
-				<button v-if="code" open-type="getUserInfo" class="jiangqie-button"
-					@getuserinfo="getuserinfo">授权登录</button>
+				<!-- <button v-if="code" open-type="getUserInfo" class="jiangqie-button"
+					@getuserinfo="getuserinfo">授权登录</button> -->
 				<!-- #endif -->
 
 				<view class="jiangqie-button" @click="clickWalk()">随便逛逛</view>
 
-				<view class="jiangqie-login-tip">授权登录即同意
+				<view class="jiangqie-login-tip">
+					<label @click="clickAgreeLicense">
+						<radio :checked="argeeLicense" color="#ff4400" style="transform:scale(0.7)" />
+						我已阅读并同意
+					</label>
 					<text v-if="yhxy" @click="clickYhxy()">《用户协议》</text><template v-else>用户协议</template>
 					及<text v-if="yszc" @click="clickYszc()">《隐私条款》</text><template v-else>隐私条款</template>
 				</view>
@@ -36,6 +40,7 @@
 	import Constant from '@/utils/constants';
 	import Auth from '@/utils/auth';
 	import Util from '@/utils/util';
+	import Alert from '@/utils/alert';
 	import Api from '@/utils/api';
 	import Rest from '@/utils/rest';
 
@@ -50,6 +55,7 @@
 
 				yhxy: '',
 				yszc: '',
+				argeeLicense: false,
 			};
 		},
 
@@ -74,23 +80,44 @@
 		},
 
 		methods: {
+			clickAgreeLicense() {
+				this.argeeLicense = !this.argeeLicense;
+			},
+			
 			clickLogin(e) {
-				wx.getUserProfile({
-					desc: '用于完善会员资料',
-					success: res => {
-						let userInfo = res.userInfo;
-						this.login(userInfo.nickName, userInfo.avatarUrl);
-					},
-					fail: (err) => {
-						console.log(err);
-					}
-				})
+				if (!this.argeeLicense) {
+					Alert.toast('请阅读并同意《用户协议》及《隐私条款》');
+					return;
+				}
+				
+				// wx.getUserProfile({
+				// 	desc: '用于完善会员资料',
+				// 	success: res => {
+				// 		let userInfo = res.userInfo;
+				// 		this.login(userInfo.nickName, userInfo.avatarUrl);
+				// 	},
+				// 	fail: (err) => {
+				// 		console.log(err);
+				// 	}
+				// })
+				
+				// #ifdef MP-WEIXIN
+				this.login('微信用户', '');
+				// #endif
+				
+				// #ifdef MP-QQ
+				this.login('QQ用户', '');
+				// #endif
+				
+				// #ifdef MP-BAIDU
+				this.login('百度用户', '');
+				// #endif
 			},
 
-			getuserinfo(res) {
-				let userInfo = res.detail.userInfo;
-				this.login(userInfo.nickName, userInfo.avatarUrl);
-			},
+			// getuserinfo(res) {
+			// 	let userInfo = res.detail.userInfo;
+			// 	this.login(userInfo.nickName, userInfo.avatarUrl);
+			// },
 
 			clickWalk() {
 				Util.navigateBack();
@@ -126,6 +153,9 @@
 				Rest.post(Api.ZG_SCOREMALL_USER_LOGIN, params).then(res => {
 					Auth.setUser(res.data);
 					Util.navigateBack();
+					if (res.data.first && res.data.first == 1) {
+						Util.openLink('/pages/verify/verify')
+					}
 				}, err => {
 					console.log(err)
 				});
