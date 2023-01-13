@@ -10,15 +10,15 @@
 <script>
 	export default {
 		name: "JiangqieNoData",
-		
+
 		data() {
 			return {};
 		},
 
 		components: {},
-		
+
 		props: {},
-		
+
 		methods: {}
 	};
 </script>

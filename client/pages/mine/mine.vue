@@ -12,7 +12,7 @@
 
 		<!-- 用户菜单 -->
 		<view class="zhuige-user-menu">
-			
+
 			<view v-if="user" class="zhuige-list-block" @click="clickMyOrder">
 				<view class="zhuige-base-list">
 					<view class="zhuige-list-img">
@@ -95,6 +95,15 @@
 </template>
 
 <script>
+	/*
+	 * 追格积分商城小程序
+	 * 作者: 追格
+	 * 文档: https://www.zhuige.com/docs/jf
+	 * gitee: https://gitee.com/zhuige_com/zhuige_scoremall
+	 * github: https://github.com/zhuige-com/zhuige_scoremall
+	 * Copyright © 2022-2023 www.zhuige.com All rights reserved.
+	 */
+
 	import Auth from '@/utils/auth';
 	import Util from '@/utils/util';
 	import Alert from '@/utils/alert';
@@ -129,10 +138,16 @@
 		},
 
 		methods: {
+			/**
+			 * 点击 打开完善用户信息页
+			 */
 			clickVerify() {
 				Util.openLink('/pages/verify/verify');
 			},
-			
+
+			/**
+			 * 点击 打开登录页
+			 */
 			clickLogin() {
 				if (Auth.getUser()) {
 					return;
@@ -140,15 +155,24 @@
 
 				Util.openLink('/pages/login/login');
 			},
-			
+
+			/**
+			 * 点击 打开订单页
+			 */
 			clickMyOrder() {
 				Util.openLink('/pages/record/record');
 			},
 
+			/**
+			 * 点击 打开关于页面
+			 */
 			clickAbout() {
 				Util.openLink(this.page_about);
 			},
 
+			/**
+			 * 点击 清理缓存
+			 */
 			clickClear() {
 				uni.showModal({
 					title: '提示',

@@ -1,15 +1,14 @@
 <template>
 	<view class="content">
 		<view v-if="slides && slides.length>0" class="zhuige-swiper">
-			<swiper indicator-dots="true" autoplay="autoplay" circular="ture"
-				indicator-color="rgba(255,255,255, 0.3)" indicator-active-color="rgba(255,255,255, 0.8)"
-				interval="5000" duration="150" easing-function="linear">
+			<swiper indicator-dots="true" autoplay="autoplay" circular="ture" indicator-color="rgba(255,255,255, 0.3)"
+				indicator-active-color="rgba(255,255,255, 0.8)" interval="5000" duration="150" easing-function="linear">
 				<swiper-item v-for="(slide, index) in slides" :key="index" @click="clickLink(slide.link)">
 					<image :src="slide.image" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
 		</view>
-		
+
 		<view v-if="icon_navs.length>0" class="jiangqie-icon-block">
 			<view v-for="(item,index) in icon_navs" :key="index" @click="clickLink(item.link)"
 				class="jiangqie-custom-icon">
@@ -73,6 +72,15 @@
 </template>
 
 <script>
+	/*
+	 * 追格积分商城小程序
+	 * 作者: 追格
+	 * 文档: https://www.zhuige.com/docs/jf
+	 * gitee: https://gitee.com/zhuige_com/zhuige_scoremall
+	 * github: https://github.com/zhuige-com/zhuige_scoremall
+	 * Copyright © 2022-2023 www.zhuige.com All rights reserved.
+	 */
+
 	import Auth from '@/utils/auth';
 	import Util from '@/utils/util';
 	import Alert from '@/utils/alert';
@@ -83,10 +91,10 @@
 	export default {
 		data() {
 			this.share_thumb = undefined;
-			
+
 			return {
 				slides: [],
-				
+
 				icon_navs: [],
 
 				my_score: undefined,
@@ -95,7 +103,7 @@
 				goods_list: [],
 				loadMore: 'more',
 				loaded: false,
-				
+
 				is_login: false,
 			};
 		},
@@ -108,10 +116,10 @@
 			this.loadSetting();
 			this.loadGoods();
 		},
-		
+
 		onShow() {
 			this.is_login = !!(Auth.getUser());
-			
+
 			if (this.is_login) {
 				Rest.post(Api.ZG_SCOREMALL_USER_SCORE).then(res => {
 					this.my_score = res.data.my_score;
@@ -153,18 +161,30 @@
 		},
 
 		methods: {
+			/**
+			 * 点击打开链接
+			 */
 			clickLink(link) {
 				Util.openLink(link);
 			},
-			
+
+			/**
+			 * 点击 查看积分说明
+			 */
 			clickMyScore() {
 				Util.openLink('/pages/page/page?page_id=2812');
 			},
-			
+
+			/**
+			 * 点击 打开登录页面
+			 */
 			clickLogin() {
 				Util.openLink('/pages/login/login');
 			},
 
+			/**
+			 * 刷新
+			 */
 			refresh() {
 				this.loadSetting();
 
@@ -172,6 +192,9 @@
 				this.loadGoods();
 			},
 
+			/**
+			 * 加载配置
+			 */
 			loadSetting() {
 				Rest.post(Api.ZG_SCOREMALL_SETTING_HOME).then(res => {
 					getApp().globalData.appName = res.data.title;
@@ -191,6 +214,9 @@
 				});
 			},
 
+			/**
+			 * 加载商品列表
+			 */
 			loadGoods() {
 				if (this.loadMore == 'loading') {
 					return;
@@ -212,19 +238,22 @@
 <style lang="scss">
 	@import "@/style/style.scss";
 
-	page, .content {
+	page,
+	.content {
 		background: #F5F5F5;
 	}
 
 	.content {
 		padding-bottom: 30rpx;
 	}
-	
+
 	.zhuige-swiper {
 		margin-bottom: 30rpx;
 	}
-	
-	.zhuige-swiper swiper, .zhuige-swiper swiper-item, .zhuige-swiper image {
+
+	.zhuige-swiper swiper,
+	.zhuige-swiper swiper-item,
+	.zhuige-swiper image {
 		height: 400rpx;
 		width: 100%;
 		// overflow: hidden;
@@ -304,6 +333,7 @@
 		border-radius: 0 0 12rpx 0;
 		overflow: hidden;
 	}
+
 	.zhuige-grid-rihgt-end image {
 		height: 100%;
 		width: 100%;
@@ -349,9 +379,11 @@
 		padding: 30rpx 0 0;
 		width: 48%;
 	}
+
 	.zhuige-point-store-list-block:nth-child(2n) {
 		margin-left: 4%;
 	}
+
 	.zhuige-point-store-list-block image {
 		height: 320rpx;
 		width: 100%;
@@ -375,13 +407,11 @@
 		margin-bottom: 12rpx;
 	}
 
-
 	.zhuige-point-store-list-opt {
 		font-size: 28rpx;
 		font-weight: 600;
 		color: #dd524d;
 	}
-
 
 	.zhuige-load-none {
 		font-size: 26rpx;

@@ -20,7 +20,6 @@
 			<!-- 底部大按钮 -->
 			<view class="jiangqie-verify-button">
 				<view @click="clickSubmit">提交</view>
-				<!-- <view @click="openLink('/pages/user/info/info')">完善详细资料</view> -->
 				<view @click="clickBack">跳过</view>
 			</view>
 		</view>
@@ -29,6 +28,15 @@
 </template>
 
 <script>
+	/*
+	 * 追格积分商城小程序
+	 * 作者: 追格
+	 * 文档: https://www.zhuige.com/docs/jf
+	 * gitee: https://gitee.com/zhuige_com/zhuige_scoremall
+	 * github: https://github.com/zhuige-com/zhuige_scoremall
+	 * Copyright © 2022-2023 www.zhuige.com All rights reserved.
+	 */
+
 	import Util from '@/utils/util';
 	import Auth from '@/utils/auth';
 	import Api from '@/utils/api';
@@ -84,12 +92,12 @@
 							icon: 'none',
 							title: res.msg
 						});
-						
+
 						let user = Auth.getUser();
 						user.nickname = this.nickname;
 						user.avatar = this.avatar;
 						Auth.setUser(user);
-						
+
 						setTimeout(() => {
 							Util.navigateBack();
 						}, 1500)

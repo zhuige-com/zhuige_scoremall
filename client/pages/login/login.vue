@@ -37,6 +37,15 @@
 </template>
 
 <script>
+	/*
+	 * 追格积分商城小程序
+	 * 作者: 追格
+	 * 文档: https://www.zhuige.com/docs/jf
+	 * gitee: https://gitee.com/zhuige_com/zhuige_scoremall
+	 * github: https://github.com/zhuige-com/zhuige_scoremall
+	 * Copyright © 2022-2023 www.zhuige.com All rights reserved.
+	 */
+
 	import Constant from '@/utils/constants';
 	import Auth from '@/utils/auth';
 	import Util from '@/utils/util';
@@ -80,57 +89,59 @@
 		},
 
 		methods: {
+			/**
+			 * 点击 同意协议
+			 */
 			clickAgreeLicense() {
 				this.argeeLicense = !this.argeeLicense;
 			},
-			
+
+			/**
+			 * 点击 登录
+			 */
 			clickLogin(e) {
 				if (!this.argeeLicense) {
 					Alert.toast('请阅读并同意《用户协议》及《隐私条款》');
 					return;
 				}
-				
-				// wx.getUserProfile({
-				// 	desc: '用于完善会员资料',
-				// 	success: res => {
-				// 		let userInfo = res.userInfo;
-				// 		this.login(userInfo.nickName, userInfo.avatarUrl);
-				// 	},
-				// 	fail: (err) => {
-				// 		console.log(err);
-				// 	}
-				// })
-				
+
 				// #ifdef MP-WEIXIN
 				this.login('微信用户', '');
 				// #endif
-				
+
 				// #ifdef MP-QQ
 				this.login('QQ用户', '');
 				// #endif
-				
+
 				// #ifdef MP-BAIDU
 				this.login('百度用户', '');
 				// #endif
 			},
 
-			// getuserinfo(res) {
-			// 	let userInfo = res.detail.userInfo;
-			// 	this.login(userInfo.nickName, userInfo.avatarUrl);
-			// },
-
+			/**
+			 * 点击 返回
+			 */
 			clickWalk() {
 				Util.navigateBack();
 			},
 
+			/**
+			 * 点击 用户协议
+			 */
 			clickYhxy() {
 				Util.openLink(this.yhxy);
 			},
 
+			/**
+			 * 点击 隐私政策
+			 */
 			clickYszc() {
 				Util.openLink(this.yszc);
 			},
 
+			/**
+			 * 登录
+			 */
 			login(nickname, avatar) {
 				let params = {
 					code: this.code,

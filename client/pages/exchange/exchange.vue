@@ -33,6 +33,15 @@
 </template>
 
 <script>
+	/*
+	 * 追格积分商城小程序
+	 * 作者: 追格
+	 * 文档: https://www.zhuige.com/docs/jf
+	 * gitee: https://gitee.com/zhuige_com/zhuige_scoremall
+	 * github: https://github.com/zhuige-com/zhuige_scoremall
+	 * Copyright © 2022-2023 www.zhuige.com All rights reserved.
+	 */
+
 	import Util from '@/utils/util';
 	import Alert from '@/utils/alert';
 	import Api from '@/utils/api';
@@ -41,7 +50,7 @@
 	export default {
 		data() {
 			this.goods_id = 0;
-			
+
 			return {
 				goods: undefined,
 
@@ -63,10 +72,16 @@
 		},
 
 		methods: {
+			/**
+			 * 点击打开链接
+			 */
 			clickLink(link) {
 				Util.openLink(link);
 			},
 
+			/**
+			 * 加载商品信息
+			 */
 			loadGoods() {
 				Rest.post(Api.ZG_SCOREMALL_GOODS_PRE_EXCHANGE, {
 					post_id: this.goods_id
@@ -79,6 +94,9 @@
 				});
 			},
 
+			/**
+			 * 点击交换商品
+			 */
 			clickExchange() {
 				Rest.post(Api.ZG_SCOREMALL_GOODS_EXCHANGE, {
 					post_id: this.goods_id,
