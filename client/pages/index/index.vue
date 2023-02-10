@@ -256,8 +256,6 @@
 	.zhuige-swiper image {
 		height: 400rpx;
 		width: 100%;
-		// overflow: hidden;
-		// border-radius: 12rpx;
 	}
 
 	.jiangqie-icon-block {
