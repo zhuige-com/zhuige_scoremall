@@ -234,6 +234,11 @@ class ZhuiGe_ScoreMall
 		require_once ZHUIGE_SCOREMALL_BASE_DIR . 'public/rest/class-zhuige-scoremall-other-controller.php';
 
 		/**
+		 * AJAX
+		 */
+		require_once ZHUIGE_SCOREMALL_BASE_DIR . 'includes/class-zhuige-scoremall-ajax.php';
+
+		/**
 		 * 后台管理
 		 */
 		require_once ZHUIGE_SCOREMALL_BASE_DIR . 'admin/codestar-framework/codestar-framework.php';

@@ -28,7 +28,7 @@ function zhuige_scoremall_add_score_order_menu() {
 		'activate_plugins',			// Capability.
 		'zhuige_scoremall_score_order',			// Menu slug.
 		'zhuige_scoremall_render_score_order',		// Callback function.
-		'',
+		'dashicons-chart-bar',
 		3
 	);
 }

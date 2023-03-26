@@ -28,7 +28,7 @@ function zhuige_scoremall_add_score_bills_menu() {
 		'activate_plugins',			// Capability.
 		'zhuige_scoremall_score_bills',			// Menu slug.
 		'zhuige_scoremall_render_score_bills',		// Callback function.
-		'',
+		'dashicons-awards',
 		3
 	);
 }
