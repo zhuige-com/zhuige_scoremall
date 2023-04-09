@@ -24,8 +24,10 @@ class ZhuiGe_ScoreMall_AJAX
         // }
 
         // Frontend AJAX calls
-        add_action('wp_ajax_admin_frontend_call', array($this, 'ajax_frontend_call'));
-        add_action('wp_ajax_nopriv_frontend_call', array($this, 'ajax_frontend_call'));
+        // add_action('wp_ajax_admin_frontend_call', array($this, 'ajax_frontend_call'));
+        // add_action('wp_ajax_nopriv_frontend_call', array($this, 'ajax_frontend_call'));
+
+        add_action('wp_ajax_zgscroemall_admin_zhuige_market', array($this, 'zgscroemall_admin_zhuige_market'));
     }
 
     public static function get_instance()
@@ -54,17 +56,20 @@ class ZhuiGe_ScoreMall_AJAX
 
     public function ajax_frontend_call()
     {
-        // // Security check
-        // check_ajax_referer('referer_id', 'nonce');
+        // Security check
+        check_ajax_referer('referer_id', 'nonce');
 
-        // $response = 'OK';
-        // // Send response in JSON format
-        // // wp_send_json( $response );
-        // // wp_send_json_error();
-        // wp_send_json_success($response);
+        $response = 'OK';
+        // Send response in JSON format
+        // wp_send_json( $response );
+        // wp_send_json_error();
+        wp_send_json_success($response);
 
-        // die();
+        die();
+    }
 
+    public function zgscroemall_admin_zhuige_market()
+    {
         $action = isset($_POST["zgaction"]) ? sanitize_text_field(wp_unslash($_POST["zgaction"])) : '';
 
         if ($action == 'get_list') { // 查询产品

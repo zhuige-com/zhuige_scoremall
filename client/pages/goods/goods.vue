@@ -12,8 +12,13 @@
 		</view>
 		<view v-if="goods" class="zhuige-point-goods">
 			<view class="zhuige-point-goods-title">
-				<view>{{goods.title}}</view>
 				<view>
+					<text>{{goods.title}}</text>
+					<button open-type="share">
+						<uni-icons type="redo" size="24"></uni-icons>
+					</button>
+				</view>
+				<view class="zhuige-goods-subtitle">
 					<text>{{goods.price}}积分</text>
 					<text>已兑 {{goods.quantity}}</text>
 				</view>
@@ -25,6 +30,7 @@
 				</view>
 			</view>
 			<view class="zhuige-point-goods-btn">
+				<button open-type="contact"><image mode="aspectFill" src="/static/images/contact.png"></image></button>
 				<view class="view" @click="clickLink('/pages/exchange/exchange?goods_id=' + goods_id)">立即兑换</view>
 			</view>
 		</view>
@@ -147,10 +153,21 @@
 	}
 
 	.zhuige-point-goods-title view:nth-child(1) {
+		display: flex;
+		justify-content: space-between;
 		padding: 50rpx 30rpx 30rpx;
 		font-weight: 600;
 		font-size: 34rpx;
 		border-bottom: 1rpx solid #DDDDDD;
+		
+		button {
+			display: flex;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+			line-height: 34rpx;
+			background-color: transparent;
+		}
 	}
 
 	.zhuige-point-goods-title view:nth-child(2) text:nth-child(2) {
@@ -170,6 +187,11 @@
 		font-weight: 600;
 		color: #dd524d;
 		padding-right: 20rpx;
+	}
+	
+	.zhuige-goods-subtitle {
+		display: flex;
+		justify-content: space-between;
 	}
 
 	.zhuige-point-goods-info {
@@ -194,6 +216,7 @@
 	}
 
 	.zhuige-point-goods-btn .view {
+		margin-left: 5rpx;
 		height: 3rem;
 		line-height: 3rem;
 		text-align: center;
@@ -207,7 +230,17 @@
 		width: 60rpx;
 		margin-top: 16rpx;
 	}
-
+	
+	.zhuige-point-goods-btn>button {
+		display: flex;
+		align-items: center;
+		border: 1px solid #dd524d;
+	}
+	
+	.zhuige-point-goods-btn>button>image {
+		height: 60rpx;
+		width: 60rpx;
+	}
 
 	.zhuige-point-goods-btn .view {
 		width: 100%;
