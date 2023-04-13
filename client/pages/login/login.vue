@@ -163,9 +163,14 @@
 
 				Rest.post(Api.ZG_SCOREMALL_USER_LOGIN, params).then(res => {
 					Auth.setUser(res.data);
-					Util.navigateBack();
+					// Util.navigateBack();
 					if (res.data.first && res.data.first == 1) {
-						Util.openLink('/pages/verify/verify')
+						// Util.openLink('/pages/verify/verify')
+						uni.redirectTo({
+							url: '/pages/verify/verify'
+						})
+					} else {
+						Util.navigateBack();
 					}
 				}, err => {
 					console.log(err)
