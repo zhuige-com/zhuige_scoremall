@@ -96,6 +96,9 @@ class ZhuiGe_ScoreMall_Setting_Controller extends ZhuiGe_ScoreMall_Base_Controll
 		}
 		$data['events'] = $events;
 
+		// 首页分享标题
+		$data['home_title'] = ZhuiGe_ScoreMall::option_value('home_title', '');
+
 		//首页分享头图
 		$home_thumb = ZhuiGe_ScoreMall::option_value('home_thumb');
 		if ($home_thumb && $home_thumb['url']) {

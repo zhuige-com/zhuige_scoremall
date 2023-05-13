@@ -90,6 +90,7 @@
 
 	export default {
 		data() {
+			this.share_title = undefined;
 			this.share_thumb = undefined;
 
 			return {
@@ -134,6 +135,10 @@
 				title: getApp().globalData.appDesc + '_' + getApp().globalData.appName,
 				path: 'pages/index/index'
 			};
+			
+			if (this.share_title && this.share_title.length>0) {
+				params.title = this.share_title;
+			}
 
 			if (this.share_thumb) {
 				params.imageUrl = this.share_thumb;
@@ -206,6 +211,7 @@
 					this.my_score = res.data.my_score;
 					this.events = res.data.events;
 
+					this.share_title = res.data.home_title;
 					this.share_thumb = res.data.thumb;
 
 					uni.stopPullDownRefresh();

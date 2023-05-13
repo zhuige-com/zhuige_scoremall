@@ -18,6 +18,13 @@ CSF::createSection($prefix, array(
     'fields' => array(
 
         array(
+            'id'          => 'home_title',
+            'type'        => 'text',
+            'title'       => '分享标题',
+            'placeholder' => '分享标题'
+        ),
+
+        array(
             'id'      => 'home_thumb',
             'type'    => 'media',
             'title'   => '分享缩略图',
@@ -93,20 +100,20 @@ CSF::createSection($prefix, array(
                     'title'       => '标题',
                     'placeholder' => '标题'
                 ),
-        
+
                 array(
                     'id'          => 'sub_title',
                     'type'        => 'text',
                     'title'       => '副标题',
                     'placeholder' => '副标题'
                 ),
-                
+
                 array(
                     'id'         => 'event',
                     'type'       => 'accordion',
                     'title'      => '图片',
                     'accordions' => array(
-        
+
                         array(
                             'title'  => '左图',
                             'fields' => array(
@@ -130,7 +137,7 @@ CSF::createSection($prefix, array(
                                 ),
                             )
                         ),
-        
+
                         array(
                             'title'  => '右上-左',
                             'fields' => array(
@@ -154,7 +161,7 @@ CSF::createSection($prefix, array(
                                 ),
                             )
                         ),
-        
+
                         array(
                             'title'  => '右下',
                             'fields' => array(
@@ -178,7 +185,7 @@ CSF::createSection($prefix, array(
                                 ),
                             )
                         ),
-        
+
                     )
                 ),
                 array(
