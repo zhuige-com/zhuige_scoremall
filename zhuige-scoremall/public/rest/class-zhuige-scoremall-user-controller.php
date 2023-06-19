@@ -31,11 +31,8 @@ class ZhuiGe_ScoreMall_User_Controller extends ZhuiGe_ScoreMall_Base_Controller
 	{
 		$code = $this->param_value($request, 'code', '');
 		$nickname = $this->param_value($request, 'nickname', '');
-		// $avatar = $this->param_value($request, 'avatar', '');
 		$channel = $this->param_value($request, 'channel', '');
-		// if (empty($code) || empty($nickname) || empty($avatar) || empty($channel)) {
-		// 	return $this->make_error('缺少参数');
-		// }
+
 		if (empty($code) || empty($nickname) || empty($channel)) {
 			return $this->make_error('缺少参数');
 		}
@@ -87,8 +84,6 @@ class ZhuiGe_ScoreMall_User_Controller extends ZhuiGe_ScoreMall_Base_Controller
 			update_user_meta($user_id, 'jq_unionid', $session['unionid']);
 		}
 
-		// update_user_meta($user_id, 'zhuige_avatar', $avatar);
-
 		$zhuige_token = $this->_generate_token();
 		update_user_meta($user_id, 'zhuige_token', $zhuige_token);
 
@@ -139,9 +134,15 @@ class ZhuiGe_ScoreMall_User_Controller extends ZhuiGe_ScoreMall_Base_Controller
 			return $this->make_error('请勿发布敏感信息');
 		}
 
-		if (!empty($nickname)) {
-			update_user_meta($user_id, 'nickname', $nickname);
+		if (empty($nickname)) {
+			return $this->make_error('昵称不可为空');
 		}
+		wp_update_user([
+			'ID' => $user_id,
+			'nickname' => $nickname,
+			'user_nicename' => $nickname,
+			'display_name' => $nickname,
+		]);
 
 		if (!empty($avatar)) {
 			update_user_meta($user_id, 'zhuige_avatar', $avatar);
