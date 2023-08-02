@@ -4,7 +4,7 @@
 			<swiper indicator-dots="true" autoplay="autoplay" circular="ture" indicator-color="rgba(255,255,255, 0.3)"
 				indicator-active-color="rgba(255,255,255, 0.8)" interval="5000" duration="150" easing-function="linear">
 				<swiper-item v-for="(item, index) in goods.slide" :key="index">
-					<view>
+					<view @click="clickSlide(index)">
 						<image mode="aspectFill" :src="item.image.url"></image>
 					</view>
 				</swiper-item>
@@ -96,6 +96,21 @@
 			 */
 			clickLink(link) {
 				Util.openLink(link);
+			},
+			
+			/**
+			 * 点击 幻灯片
+			 */
+			clickSlide(index) {
+				let urls = [];
+				this.goods.slide.forEach(image => {
+					urls.push(image.image.url);
+				});
+		
+				uni.previewImage({
+					current: index,
+					urls: urls,
+				})
 			},
 
 			/**

@@ -15,11 +15,6 @@
 				<view v-if="code" class="jiangqie-button" @click="clickLogin()">授权登录</view>
 				<!-- #endif -->
 
-				<!-- #ifdef MP-QQ || MP-BAIDU -->
-				<!-- <button v-if="code" open-type="getUserInfo" class="jiangqie-button"
-					@getuserinfo="getuserinfo">授权登录</button> -->
-				<!-- #endif -->
-
 				<view class="jiangqie-button" @click="clickWalk()">随便逛逛</view>
 
 				<view class="jiangqie-login-tip">

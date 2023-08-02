@@ -1,5 +1,5 @@
 module.exports = {
-	JQ_VERSION: '1.2.9',
+	JQ_VERSION: '1.3.1',
 
 	//分页 每页 数量 需要与服务器一致
 	JQ_PER_PAGE_COUNT: 10,

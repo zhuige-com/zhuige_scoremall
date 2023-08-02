@@ -50,7 +50,7 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		}
 
 		return $this->make_success([
-			'list' => $list, 
+			'list' => $list,
 			'more' => (count($result) >= ZhuiGe_ScoreMall::POSTS_PER_PAGE ? 'more' : 'nomore')
 		]);
 	}
@@ -64,7 +64,7 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		if (!$post_id) {
 			return $this->make_error('缺少参数');
 		}
-		
+
 		$postObj = get_post($post_id);
 		if (!$postObj) {
 			return $this->make_error('商品不存在~');
@@ -213,9 +213,13 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		$table_score_order = $wpdb->prefix . 'zhuige_scoremall_score_order';
 		$orders = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT * FROM `$table_score_order` WHERE `user_id`=%d ORDER BY `id` DESC LIMIT %d, %d", $my_user_id, $offset, ZhuiGe_ScoreMall::POSTS_PER_PAGE
+				"SELECT * FROM `$table_score_order` WHERE `user_id`=%d ORDER BY `id` DESC LIMIT %d, %d",
+				$my_user_id,
+				$offset,
+				ZhuiGe_ScoreMall::POSTS_PER_PAGE
 			),
-		ARRAY_A);
+			ARRAY_A
+		);
 		foreach ($orders as &$order) {
 			$order['createtime'] = date('Y.m.d', $order['createtime']);
 		}
@@ -250,6 +254,7 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		//缩略图
 		$data['thumbnail'] = $this->get_one_post_thumbnail($post, true);
 
+		$data['badge'] = ZhuiGe_ScoreMall::post_goods_property($post->ID, 'badge', '');
 		$data['price'] = ZhuiGe_ScoreMall::post_goods_property($post->ID, 'price', 0);
 		$data['quantity'] = ZhuiGe_ScoreMall::post_goods_property($post->ID, 'quantity', 0);
 

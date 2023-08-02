@@ -27,7 +27,7 @@
 					<view>{{item.createtime}}</view>
 				</view>
 			</view>
-			
+
 			<uni-load-more :status="loadMore"></uni-load-more>
 		</template>
 		<template v-else>
@@ -45,7 +45,7 @@
 	 * github: https://github.com/zhuige-com/zhuige_scoremall
 	 * Copyright © 2022-2023 www.zhuige.com All rights reserved.
 	 */
-	
+
 	import Util from '@/utils/util';
 	import Alert from '@/utils/alert';
 	import Api from '@/utils/api';
@@ -161,7 +161,7 @@
 	.zhuige-exchange-contact-info view:nth-child(3) {
 		color: #999999;
 	}
-	
+
 	.zhuige-exchange-footer {
 		display: flex;
 		justify-content: space-between;

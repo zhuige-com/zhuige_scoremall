@@ -161,5 +161,4 @@ class ZhuiGe_ScoreMall_Setting_Controller extends ZhuiGe_ScoreMall_Base_Controll
 
 		return $this->make_success($data);
 	}
-
 }

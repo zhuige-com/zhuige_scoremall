@@ -56,6 +56,7 @@
 					<view v-for="(item,index) in goods_list" :key="index" class="zhuige-point-store-list-block"
 						@click="clickLink('/pages/goods/goods?goods_id=' + item.id)">
 						<image :src="item.thumbnail" mode="aspectFill"></image>
+						<text v-if="item.badge" class="badge">{{item.badge}}</text>
 						<view class="zhuige-point-store-list-text">
 							<view class="zhuige-point-store-list-title">{{item.title}}</view>
 							<view class="zhuige-point-store-list-opt">{{item.price}}积分</view>
@@ -135,8 +136,8 @@
 				title: getApp().globalData.appDesc + '_' + getApp().globalData.appName,
 				path: 'pages/index/index'
 			};
-			
-			if (this.share_title && this.share_title.length>0) {
+
+			if (this.share_title && this.share_title.length > 0) {
 				params.title = this.share_title;
 			}
 
@@ -380,6 +381,7 @@
 	}
 
 	.zhuige-point-store-list-block {
+		position: relative;
 		padding: 30rpx 0 0;
 		width: 48%;
 	}
@@ -393,6 +395,20 @@
 		width: 100%;
 		border-radius: 12rpx;
 		margin-bottom: 10rpx;
+	}
+	
+	.zhuige-point-store-list-block .badge {
+		position: absolute;
+		z-index: 3;
+		height: 48rpx;
+		line-height: 48rpx;
+		padding: 0 20rpx;
+		border-radius: 0 0 8rpx 8rpx;
+		background: #FF6146;
+		color: #FFFFFF;
+		font-size: 24rpx;
+		font-weight: 300;
+		left: 20rpx;
 	}
 
 	.zhuige-point-store-list-text {

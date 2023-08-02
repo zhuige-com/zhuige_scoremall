@@ -93,6 +93,13 @@ class ZhuiGe_ScoreMall_Admin
                     ),
                 ),
 
+				array(
+					'id'          => 'badge',
+					'type'        => 'text',
+					'title'       => '角标',
+					'placeholder' => '角标'
+				),
+
                 array(
                     'id'      => 'price',
                     'type'    => 'number',

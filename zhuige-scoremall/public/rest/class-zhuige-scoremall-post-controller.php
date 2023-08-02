@@ -35,7 +35,8 @@ class ZhuiGe_ScoreMall_Post_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		$table_post = $wpdb->prefix . 'posts';
 		$result = $wpdb->get_row(
 			$wpdb->prepare(
-				"SELECT post_title, post_content FROM `$table_post` WHERE ID=%d", $page_id
+				"SELECT post_title, post_content FROM `$table_post` WHERE ID=%d",
+				$page_id
 			)
 		);
 		if (!$result) {
@@ -46,5 +47,4 @@ class ZhuiGe_ScoreMall_Post_Controller extends ZhuiGe_ScoreMall_Base_Controller
 
 		return $this->make_success($page);
 	}
-
 }
