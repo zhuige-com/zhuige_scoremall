@@ -129,6 +129,15 @@ class ZhuiGe_ScoreMall_Setting_Controller extends ZhuiGe_ScoreMall_Base_Controll
 			$data['page_about'] = '/pages/page/page?page_id=' . $my_about;
 		}
 
+		// 备案信息
+		$beian_icp = ZhuiGe_ScoreMall::option_value('beian_icp');
+		if ($beian_icp && $beian_icp['switch']) {
+			$data['beian_icp'] = [
+				'sn' => $beian_icp['sn'],
+				'link' => $beian_icp['link'],
+			];
+		}
+
 		return $this->make_success($data);
 	}
 

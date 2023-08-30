@@ -90,7 +90,14 @@
 			<image :src="copyright.logo" mode="aspectFill"></image>
 			<view>{{copyright.text}}</view>
 		</view>
-
+		
+		<!-- 备案信息 -->
+		<view class="zhuige-recordinfo" v-if="beian_icp" @click="clickLink(beian_icp.link)">
+			<text>
+				{{beian_icp.sn}}
+			</text>
+		</view>
+		
 	</view>
 </template>
 
@@ -120,6 +127,8 @@
 				page_about: undefined,
 
 				copyright: undefined,
+				
+				beian_icp: undefined,
 			};
 		},
 
@@ -128,6 +137,10 @@
 				this.background = res.data.background;
 				this.page_about = res.data.page_about;
 				this.copyright = res.data.copyright;
+				
+				if (res.data.beian_icp) {
+					this.beian_icp = res.data.beian_icp;
+				}
 			}, err => {
 				console.log(err);
 			});
@@ -138,6 +151,13 @@
 		},
 
 		methods: {
+			/**
+			 * 点击打开链接
+			 */
+			clickLink(link) {
+				Util.openLink(link);
+			},
+			
 			/**
 			 * 点击 打开完善用户信息页
 			 */
@@ -321,5 +341,22 @@
 	.zhuige-user-menu button {
 		height: 4rem;
 		line-height: 4rem;
+	}
+	
+	/* 备案信息 */
+	.zhuige-recordinfo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 32rpx;
+		// margin-bottom: 60rpx;
+		line-height: 32rpx;
+		font-size: 24rpx;
+		font-weight: 400;
+		color: #999999;
+		
+		text {
+			padding-bottom: 20rpx;
+		}
 	}
 </style>
