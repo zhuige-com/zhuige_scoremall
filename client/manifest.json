@@ -2,7 +2,7 @@
     "name" : "zhuige-scoremall",
     "appid" : "",
     "description" : "",
-    "versionName" : "1.3.3",
+    "versionName" : "1.3.4",
     "versionCode" : "100",
     "transformPx" : false,
     /* 5+App特有相关 */
@@ -54,7 +54,8 @@
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+		"__usePrivacyCheck__": true
     },
     "mp-alipay" : {
         "usingComponents" : true

@@ -69,6 +69,8 @@
 		<template v-else>
 			<jiangqie-no-data v-if="loaded"></jiangqie-no-data>
 		</template>
+		
+		<zhuige-privacy></zhuige-privacy>
 	</view>
 </template>
 
@@ -88,6 +90,7 @@
 	import Api from '@/utils/api';
 	import Rest from '@/utils/rest';
 	import JiangqieNoData from "@/components/nodata/nodata";
+	import ZhuigePrivacy from "@/components/zhuige-privacy";
 
 	export default {
 		data() {
@@ -112,6 +115,7 @@
 
 		components: {
 			JiangqieNoData,
+			ZhuigePrivacy
 		},
 
 		onLoad(options) {

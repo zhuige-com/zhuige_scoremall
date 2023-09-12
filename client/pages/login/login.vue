@@ -28,6 +28,8 @@
 			</view>
 
 		</view>
+		
+		<zhuige-privacy></zhuige-privacy>
 	</view>
 </template>
 
@@ -47,6 +49,7 @@
 	import Alert from '@/utils/alert';
 	import Api from '@/utils/api';
 	import Rest from '@/utils/rest';
+	import ZhuigePrivacy from "@/components/zhuige-privacy";
 
 	export default {
 		data() {
@@ -61,6 +64,10 @@
 				yszc: '',
 				argeeLicense: false,
 			};
+		},
+		
+		components: {
+			ZhuigePrivacy
 		},
 
 		onLoad(options) {

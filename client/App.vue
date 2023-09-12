@@ -1,6 +1,6 @@
 <script>
 	/*
-	 * 追格积分商城小程序 v1.3.3
+	 * 追格积分商城小程序 v1.3.4
 	 * 作者: 追格
 	 * 文档: https://www.zhuige.com/docs/jf
 	 * gitee: https://gitee.com/zhuige_com/zhuige_scoremall
@@ -9,7 +9,7 @@
 	 */
 
 	import Vue from 'vue'
-
+	
 	export default {
 		globalData: {
 			appName: '积分商城',
