@@ -57,13 +57,23 @@ module.exports = {
 	 * 获取登录配置
 	 */
 	ZG_SCOREMALL_SETTING_LOGIN: makeURL('setting', 'login'),
-
+	
+	/**
+	 * 获取注销配置
+	 */
+	ZG_SCOREMALL_SETTING_LOGOUT: makeURL('setting', 'logout'),
+	
 	// ---------- 用户 ----------
 
 	/**
 	 * 登录
 	 */
 	ZG_SCOREMALL_USER_LOGIN: makeURL('user', 'login'),
+	
+	/**
+	 * 注销
+	 */
+	ZG_SCOREMALL_USER_LOGOUT: makeURL('user', 'logout'),
 
 	/**
 	 * 我的积分

@@ -20,6 +20,7 @@ class ZhuiGe_ScoreMall_Setting_Controller extends ZhuiGe_ScoreMall_Base_Controll
 			'home' => 'get_home',
 			'mine' => 'get_mine',
 			'login' => 'get_login',
+			'logout' => 'get_logout',
 		];
 	}
 
@@ -170,4 +171,18 @@ class ZhuiGe_ScoreMall_Setting_Controller extends ZhuiGe_ScoreMall_Base_Controll
 
 		return $this->make_success($data);
 	}
+
+	/**
+	 * 获取配置 注销
+	 */
+	public function get_logout()
+	{
+		$data = [];
+
+		// 奖项说明
+		$data['explain'] = apply_filters('the_content', ZhuiGe_ScoreMall::option_value('logout_explain'));
+
+		return $this->make_success($data);
+	}
+
 }

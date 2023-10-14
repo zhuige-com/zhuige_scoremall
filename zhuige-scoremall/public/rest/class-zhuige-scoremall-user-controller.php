@@ -18,6 +18,9 @@ class ZhuiGe_ScoreMall_User_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		$this->module = 'user';
 		$this->routes = [
 			'login' => 'user_login',
+			
+			'logout' => 'user_logout',
+
 			'score' => 'get_score',
 
 			'set_info' => 'set_info',
@@ -99,6 +102,32 @@ class ZhuiGe_ScoreMall_User_Controller extends ZhuiGe_ScoreMall_Base_Controller
 		}
 
 		return $this->make_success($user);
+	}
+
+	/**
+	 *用户注销
+	 */
+	public function user_logout($request)
+	{
+		$user_id = get_current_user_id();
+		if (!$user_id) {
+			return $this->make_error('还没有登陆', -1);
+		}
+
+		$res = wp_delete_user($user_id);
+		if (!$res) {
+			return $this->make_error('请稍后再试~');
+		}
+
+		global $wpdb;
+
+		$wpdb->delete($wpdb->prefix . 'comments', ['user_id' => $user_id]);
+
+		$wpdb->delete($wpdb->prefix . 'zhuige_scoremall_score_bills', ['user_id' => $user_id]);
+
+		$wpdb->delete($wpdb->prefix . 'zhuige_scoremall_score_order', ['user_id' => $user_id]);
+
+		return $this->make_success();
 	}
 
 	/**

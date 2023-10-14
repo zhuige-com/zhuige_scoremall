@@ -11,11 +11,11 @@
  */
 
 //
-// 登录页
+// 登录注销页
 //
 CSF::createSection($prefix, array(
     'id' => 'my',
-    'title' => '登录',
+    'title' => '登录注销',
     'icon'  => 'fas fa-user-lock',
     'fields' => array(
         array(
@@ -62,5 +62,10 @@ CSF::createSection($prefix, array(
             'placeholder' => '选择一个页面',
         ),
 
+        array(
+            'id'    => 'logout_explain',
+            'type'  => 'wp_editor',
+            'title' => '注销说明',
+        ),
     )
 ));

@@ -20,6 +20,13 @@
 			}
 		},
 		{
+			"path": "pages/logout/logout",
+			"style": {
+				"navigationBarTitleText": "注销",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/goods/goods",
 			"style": {
 				"navigationBarTitleText": "商品详情",

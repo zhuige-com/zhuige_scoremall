@@ -144,3 +144,41 @@ swiper .wx-swiper-dot.wx-swiper-dot-active, uni-swiper .uni-swiper-dot-active {
     width: 12px;
 	border-radius: 4px;
 }
+
+/* =========== 账号注销 =========== */
+.zhuige-logout-info {
+	padding: 20px;
+	background: #FFFFFF;
+	border-radius: 12rpx;
+}
+.zhuige-logout-info view {
+	line-height: 2.2em;
+	font-size: 28rpx;
+}
+.zhuige-logout-info view image {
+	width: 100%;
+}
+.zhuige-logout-info view.zhuige-logout-title {
+	font-size: 33rpx;
+	font-weight: 500;
+}
+.zhuige-logout-form {
+	text-align: center;
+	padding: 10px;
+}
+.zhuige-logout-form label {
+	font-size: 26rpx;
+	font-weight: 300;
+}
+.zhuige-logout-form view:nth-child(2) {
+	width: 60%;
+	text-align: center;
+	height: 96rpx;
+	line-height: 96rpx;
+	border-radius: 96rpx;
+	font-size: 32rpx;
+	font-weight: 400;
+	color: #FFFFFF;
+	background: #FF4400;
+	margin: 10px auto;
+}
