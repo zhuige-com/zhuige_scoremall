@@ -97,8 +97,6 @@
 				{{beian_icp.sn}}
 			</text>
 		</view>
-		
-		<zhuige-privacy></zhuige-privacy>
 	</view>
 </template>
 
@@ -117,9 +115,12 @@
 	import Alert from '@/utils/alert';
 	import Api from '@/utils/api';
 	import Rest from '@/utils/rest';
-	import ZhuigePrivacy from "@/components/zhuige-privacy";
 
 	export default {
+		components: {
+			
+		},
+		
 		data() {
 			return {
 				user: undefined,
@@ -132,10 +133,6 @@
 				
 				beian_icp: undefined,
 			};
-		},
-		
-		components: {
-			ZhuigePrivacy
 		},
 
 		onLoad() {

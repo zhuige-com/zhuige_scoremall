@@ -34,8 +34,6 @@
 				<view class="view" @click="clickLink('/pages/exchange/exchange?goods_id=' + goods_id)">立即兑换</view>
 			</view>
 		</view>
-		
-		<zhuige-privacy></zhuige-privacy>
 	</view>
 </template>
 
@@ -53,20 +51,18 @@
 	import Alert from '@/utils/alert';
 	import Api from '@/utils/api';
 	import Rest from '@/utils/rest';
-	import mpHtml from '@/components/mp-html/mp-html'
-	import ZhuigePrivacy from "@/components/zhuige-privacy";
+	import mpHtml from '@/components/mp-html/mp-html';
 
 	export default {
+		components: {
+			mpHtml
+		},
+		
 		data() {
 			return {
 				goods_id: 0,
 				goods: undefined,
 			};
-		},
-
-		components: {
-			mpHtml,
-			ZhuigePrivacy
 		},
 
 		onLoad(options) {

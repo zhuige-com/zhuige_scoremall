@@ -29,8 +29,6 @@
 				<view @click="clickExchange()" class="zhuige-exchange-btn">支付{{goods.price}}积分，立即兑换</view>
 			</view>
 		</view>
-		
-		<zhuige-privacy></zhuige-privacy>
 	</view>
 </template>
 
@@ -48,10 +46,12 @@
 	import Alert from '@/utils/alert';
 	import Api from '@/utils/api';
 	import Rest from '@/utils/rest';
-	
-	import ZhuigePrivacy from "@/components/zhuige-privacy";
 
 	export default {
+		components: {
+			
+		},
+		
 		data() {
 			this.goods_id = 0;
 
@@ -63,10 +63,6 @@
 				address: '',
 				remark: ''
 			};
-		},
-		
-		components: {
-			ZhuigePrivacy
 		},
 
 		onLoad(options) {
