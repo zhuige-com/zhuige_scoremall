@@ -97,6 +97,16 @@ class ZhuiGe_ScoreMall_Setting_Controller extends ZhuiGe_ScoreMall_Base_Controll
 		}
 		$data['events'] = $events;
 
+		//弹框广告
+		$home_ad_pop = ZhuiGe_ScoreMall::option_value('home_ad_pop');
+		if ($home_ad_pop && $home_ad_pop['switch'] && $home_ad_pop['image'] && $home_ad_pop['image']['url']) {
+			$data['pop_ad'] = [
+				'image' => $home_ad_pop['image']['url'],
+				'link' => $home_ad_pop['link'],
+				'interval' => $home_ad_pop['interval'],
+			];
+		}
+
 		// 首页分享标题
 		$data['home_title'] = ZhuiGe_ScoreMall::option_value('home_title', '');
 

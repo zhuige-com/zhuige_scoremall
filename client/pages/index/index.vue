@@ -69,6 +69,15 @@
 		<template v-else>
 			<jiangqie-no-data v-if="loaded"></jiangqie-no-data>
 		</template>
+		
+		<view v-if="pop_ad" class="zhugie-pop-cover">
+			<view class="" @click="clickPopAd" class="zhuige-pop-box">
+				<image mode="aspectFit" :src="pop_ad.image"></image>
+				<view>
+					<uni-icons @click="clickPopAdClose" type="close" size="32" color="#FFFFFF"></uni-icons>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -82,6 +91,7 @@
 	 * Copyright © 2022-2023 www.zhuige.com All rights reserved.
 	 */
 
+	import Constants from '@/utils/constants';
 	import Auth from '@/utils/auth';
 	import Util from '@/utils/util';
 	import Alert from '@/utils/alert';
@@ -111,6 +121,9 @@
 				loaded: false,
 
 				is_login: false,
+				
+				// 弹窗广告
+				pop_ad: undefined,
 			};
 		},
 
@@ -214,6 +227,9 @@
 
 					this.share_title = res.data.home_title;
 					this.share_thumb = res.data.thumb;
+					
+					// 弹框
+					this.pop_ad = Util.getPopAd(res.data.pop_ad, Constants.ZHUIGE_INDEX_MAXAD_LAST_TIME);
 
 					uni.stopPullDownRefresh();
 				}, err => {
@@ -237,7 +253,24 @@
 					this.loadMore = res.data.more;
 					this.loaded = true;
 				});
-			}
+			},
+			
+			/**
+			 * 点击弹出窗口
+			 */
+			clickPopAd() {
+				wx.setStorageSync(Constants.ZHUIGE_INDEX_MAXAD_LAST_TIME, new Date().getTime())
+				Util.openLink(this.pop_ad.link);
+				this.pop_ad = false;
+			},
+			
+			/**
+			 * 关闭弹出窗口
+			 */
+			clickPopAdClose() {
+				this.pop_ad = false;
+				wx.setStorageSync(Constants.ZHUIGE_INDEX_MAXAD_LAST_TIME, new Date().getTime())
+			},
 		}
 	}
 </script>
@@ -440,4 +473,45 @@
 		padding: 40rpx;
 		text-align: center;
 	}
+	
+	/**
+	 * 弹窗 start
+	 */
+	.zhugie-pop-cover {
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(0, 0, 0, .6);
+		z-index: 998;
+		top: 0;
+		left: 0;
+	}
+	
+	.zhuige-pop-box {
+		width: 600rpx;
+		height: 600rpx;
+		position: relative;
+		text-align: center;
+	}
+	
+	.zhuige-pop-box image {
+		height: 100%;
+		width: 100%;
+	}
+	
+	.zhuige-pop-box view {
+		position: absolute;
+		bottom: -48rpx;
+		height: 48rpx;
+		width: 48rpx;
+		z-index: 999;
+		left: 50%;
+		margin-left: -24rpx;
+	}
+	/**
+	 * 弹窗 end
+	 */
 </style>
