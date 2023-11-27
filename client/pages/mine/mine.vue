@@ -83,6 +83,20 @@
 					<uni-icons type="arrowright" size="14"></uni-icons>
 				</view>
 			</view>
+			
+			<view class="zhuige-list-block" @click="clickScore">
+				<view class="zhuige-base-list">
+					<view class="zhuige-list-img">
+						<image src="/static/images/icon_star.png" mode="aspectFill"></image>
+					</view>
+					<view class="zhuige-list-info">
+						<view class="zhuige-list-title">评价打分</view>
+					</view>
+				</view>
+				<view class="zhugie-list-link">
+					<uni-icons type="arrowright" size="14"></uni-icons>
+				</view>
+			</view>
 		</view>
 
 		<!-- 追格copyright -->
@@ -221,6 +235,21 @@
 						}
 					}
 				});
+			},
+			
+			/**
+			 * 点击 评价打分
+			 */
+			clickScore() {
+				var plugin = requirePlugin("wxacommentplugin");
+				plugin.openComment({
+					success: (res) => {
+						console.log('plugin.openComment success', res)
+					},
+					fail: (res) => {
+						console.log('plugin.openComment fail', res)
+					}
+				})
 			}
 		}
 	}
