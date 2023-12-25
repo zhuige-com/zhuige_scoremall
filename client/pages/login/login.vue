@@ -161,6 +161,13 @@
 				// #endif
 
 				Rest.post(Api.ZG_SCOREMALL_USER_LOGIN, params).then(res => {
+					if (res.code != 0) {
+						uni.showModal({
+							content: res.msg
+						})
+						return;
+					}
+					
 					Auth.setUser(res.data);
 					if (res.data.first && res.data.first == 1) {
 						uni.redirectTo({
