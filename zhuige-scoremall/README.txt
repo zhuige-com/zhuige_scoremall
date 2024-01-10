@@ -1,10 +1,10 @@
 === ZhuiGe Score Mall Mini Program ===
 Contributors: zhuige
 Donate link: https://www.zhuige.com/
-Tags: 追格,积分商城,小程序,H5,微信,QQ,百度
+Tags: 追格,积分商城,小程序,H5,微信,百度
 Requires at least: 5.8
 Tested up to: 6.3
-Stable tag: 1.3.10
+Stable tag: 1.3.11
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -39,7 +39,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 2. 在后台插件列表中启用"追格积分商城"
 
-3. 设置微信/QQ/百度小程序的appid，及其他配置信息
+3. 设置微信/百度小程序的appid，及其他配置信息
 
 == Frequently Asked Questions ==
 
@@ -57,6 +57,10 @@ gitee下载（优先更新）：https://gitee.com/zhuige_com/zhuige_scoremall
 2. screenshot-2.png
 
 == Changelog ==
+
+## 1.3.11（2024-01-10）
+1. 清理QQ小程序相关代码
+2. 一路前行，感恩有你
 
 ## 1.3.10（2023-12-25）
 1. 默认关闭打分功能，如有需要请自行开启

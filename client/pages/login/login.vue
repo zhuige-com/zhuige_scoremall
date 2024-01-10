@@ -11,7 +11,7 @@
 				<view class="jiangqie-login-tip">H5平台尚未适配</view>
 				<!-- #endif -->
 
-				<!-- #ifdef MP-WEIXIN || MP-QQ || MP-BAIDU -->
+				<!-- #ifdef MP-WEIXIN || MP-BAIDU -->
 				<view v-if="code" class="jiangqie-button" @click="clickLogin()">授权登录</view>
 				<!-- #endif -->
 
@@ -38,7 +38,7 @@
 	 * 文档: https://www.zhuige.com/docs/jf
 	 * gitee: https://gitee.com/zhuige_com/zhuige_scoremall
 	 * github: https://github.com/zhuige-com/zhuige_scoremall
-	 * Copyright © 2022-2023 www.zhuige.com All rights reserved.
+	 * Copyright © 2022-2024 www.zhuige.com All rights reserved.
 	 */
 
 	import Constant from '@/utils/constants';
@@ -68,7 +68,7 @@
 		},
 
 		onLoad(options) {
-			// #ifdef MP-WEIXIN || MP-QQ || MP-BAIDU
+			// #ifdef MP-WEIXIN || MP-BAIDU
 			uni.login({
 				success: (res) => {
 					this.code = res.code;
@@ -106,10 +106,6 @@
 
 				// #ifdef MP-WEIXIN
 				this.login('微信用户', '');
-				// #endif
-
-				// #ifdef MP-QQ
-				this.login('QQ用户', '');
 				// #endif
 
 				// #ifdef MP-BAIDU
@@ -150,10 +146,6 @@
 
 				// #ifdef MP-WEIXIN
 				params.channel = 'weixin';
-				// #endif
-
-				// #ifdef MP-QQ
-				params.channel = 'qq';
 				// #endif
 
 				// #ifdef MP-BAIDU

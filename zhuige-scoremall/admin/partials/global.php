@@ -7,7 +7,7 @@
  * github: https://github.com/zhuige-com/zhuige_scoremall
  * gitee: https://gitee.com/zhuige_com/zhuige_scoremall
  * License：GPL-2.0
- * Copyright © 2022-2023 www.zhuige.com All rights reserved.
+ * Copyright © 2022-2024 www.zhuige.com All rights reserved.
  */
 
 // 基础设置
@@ -66,24 +66,6 @@ CSF::createSection($prefix, array(
                     'id'    => 'appid',
                     'type'  => 'text',
                     'title' => 'App Key',
-                ),
-                array(
-                    'id'    => 'secret',
-                    'type'  => 'text',
-                    'title' => 'App Secret',
-                ),
-            ),
-        ),
-
-        array(
-            'id'     => 'basic_qq',
-            'type'   => 'fieldset',
-            'title'  => 'QQ小程序',
-            'fields' => array(
-                array(
-                    'id'    => 'appid',
-                    'type'  => 'text',
-                    'title' => 'App ID',
                 ),
                 array(
                     'id'    => 'secret',

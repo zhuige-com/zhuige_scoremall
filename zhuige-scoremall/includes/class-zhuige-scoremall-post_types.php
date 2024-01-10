@@ -7,7 +7,7 @@
  * github: https://github.com/zhuige-com/zhuige_scoremall
  * gitee: https://gitee.com/zhuige_com/zhuige_scoremall
  * License：GPL-2.0
- * Copyright © 2022-2023 www.zhuige.com All rights reserved.
+ * Copyright © 2022-2024 www.zhuige.com All rights reserved.
  */
 
 class ZhuiGe_ScoreMall_Post_Types
