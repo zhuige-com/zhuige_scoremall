@@ -4,8 +4,8 @@ Donate link: https://www.zhuige.com/
 Tags: 追格,积分商城,小程序,H5,微信,百度
 Requires at least: 5.8
 Tested up to: 6.4
-Stable tag: 1.3.13
-Requires PHP: 7.2
+Stable tag: 1.3.14
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,6 +57,9 @@ gitee下载（优先更新）：https://gitee.com/zhuige_com/zhuige_scoremall
 2. screenshot-2.png
 
 == Changelog ==
+
+## 1.3.14（2024-04-02）
+1. 优化评价打分功能
 
 ## 1.3.13（2024-03-19）
 1. 支持 PHP 8
