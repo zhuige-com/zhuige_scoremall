@@ -182,3 +182,93 @@ swiper .wx-swiper-dot.wx-swiper-dot-active, uni-swiper .uni-swiper-dot-active {
 	background: #FF4400;
 	margin: 10px auto;
 }
+
+// 商品列表 start
+.zhuige-point-store-box {
+	padding: 30rpx;
+	background: #FFFFFF;
+	border-radius: 16rpx;
+	margin-bottom: 30rpx;
+}
+
+.zhuige-point-store-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.zhuige-point-store-title view:first-child {
+	font-weight: 600;
+	font-size: 34rpx;
+}
+
+.zhuige-point-store-title view:nth-child(2) {
+	font-size: 28rpx;
+	font-weight: 200;
+}
+
+.zhuige-point-store-title view:nth-child(2) text {
+	font-weight: 600;
+	color: #dd524d;
+	padding-left: 10rpx;
+}
+
+.zhuige-point-store-list {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.zhuige-point-store-list-block {
+	position: relative;
+	padding: 30rpx 0 0;
+	width: 48%;
+}
+
+.zhuige-point-store-list-block:nth-child(2n) {
+	margin-left: 4%;
+}
+
+.zhuige-point-store-list-block image {
+	height: 320rpx;
+	width: 100%;
+	border-radius: 12rpx;
+	margin-bottom: 10rpx;
+}
+
+.zhuige-point-store-list-block .badge {
+	position: absolute;
+	z-index: 3;
+	height: 48rpx;
+	line-height: 48rpx;
+	padding: 0 20rpx;
+	border-radius: 0 0 8rpx 8rpx;
+	background: #FF6146;
+	color: #FFFFFF;
+	font-size: 24rpx;
+	font-weight: 300;
+	left: 20rpx;
+}
+
+.zhuige-point-store-list-text {
+	overflow: hidden;
+	width: 100%;
+}
+
+.zhuige-point-store-list-title {
+	height: 1.2rem;
+	line-height: 1.2rem;
+	word-break: keep-all;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 32rpx;
+	font-weight: 600;
+	margin-bottom: 12rpx;
+}
+
+.zhuige-point-store-list-opt {
+	font-size: 28rpx;
+	font-weight: 600;
+	color: #dd524d;
+}
+// 商品列表 end

@@ -23,12 +23,31 @@
 					<text>已兑 {{goods.quantity}}</text>
 				</view>
 			</view>
+			
 			<view class="zhuige-point-goods-info">
 				<view class="zhuige-point-goods-header">产品详情</view>
 				<view class="zhuige-point-goods-cont">
 					<mp-html :content="goods.content" />
 				</view>
 			</view>
+			
+			<view v-if="goods.recs" class="zhuige-point-store-box">
+				<view class="zhuige-point-store-title">
+					<view>猜你喜欢</view>
+				</view>
+				<view class="zhuige-point-store-list">
+					<view v-for="(item,index) in goods.recs" :key="index" class="zhuige-point-store-list-block"
+						@click="clickLink('/pages/goods/goods?goods_id=' + item.id)">
+						<image :src="item.thumbnail" mode="aspectFill"></image>
+						<text v-if="item.badge" class="badge">{{item.badge}}</text>
+						<view class="zhuige-point-store-list-text">
+							<view class="zhuige-point-store-list-title">{{item.title}}</view>
+							<view class="zhuige-point-store-list-opt">{{item.price}}积分</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			
 			<view class="zhuige-point-goods-btn">
 				<button open-type="contact"><image mode="aspectFill" src="/static/images/contact.png"></image></button>
 				<view class="view" @click="clickLink('/pages/exchange/exchange?goods_id=' + goods_id)">立即兑换</view>

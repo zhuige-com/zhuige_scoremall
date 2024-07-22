@@ -4,7 +4,7 @@ Donate link: https://www.zhuige.com/
 Tags: 追格,积分商城,小程序,H5,微信,百度
 Requires at least: 5.8
 Tested up to: 6.5
-Stable tag: 1.3.15
+Stable tag: 1.4.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,13 @@ gitee下载（优先更新）：https://gitee.com/zhuige_com/zhuige_scoremall
 2. screenshot-2.png
 
 == Changelog ==
+
+## 1.4.1（2024-07-22）
+1. 新增：商品详情增加猜你喜欢
+2. 修复了已知的bug
+
+## 1.4.0（2024-05-24）
+1. 支持 vue3
 
 ## 1.3.15（2024-05-02）
 1. 节日快乐!假期特惠,联系追格客服可得

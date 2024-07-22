@@ -313,7 +313,7 @@
 		font-weight: 200;
 	}
 
-	.zhugie-list-link * {
+	.zhugie-list-link {
 		color: #999999;
 	}
 

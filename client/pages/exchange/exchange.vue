@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
-		<view class="zhuige-exchange">
-			<view v-if="goods" class="zhuige-exchange-goods">
+		<view v-if="goods" class="zhuige-exchange">
+			<view class="zhuige-exchange-goods">
 				<image :src="goods.thumbnail" mode="aspectFill"></image>
 				<view class="zhuige-exchange-info">
 					<view>{{goods.title}}</view>

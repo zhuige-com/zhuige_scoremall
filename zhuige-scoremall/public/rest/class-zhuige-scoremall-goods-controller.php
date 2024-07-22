@@ -84,6 +84,25 @@ class ZhuiGe_ScoreMall_Goods_Controller extends ZhuiGe_ScoreMall_Base_Controller
 
 		$post['content'] = apply_filters('the_content', $postObj->post_content);
 
+		// 推荐商品
+		$args = [
+			'posts_per_page' => 4,
+			'offset' => 0,
+			'orderby' => 'date',
+			'post_type' => ['jq_goods'],
+			'post__not_in' => [$post_id]
+		];
+
+		$query = new WP_Query();
+		$result = $query->query($args);
+		$recs = [];
+		foreach ($result as $item) {
+			$recs[] = $this->_formatPost($item);
+		}
+
+		if (count($recs) > 0) {
+			$post['recs'] = $recs;
+		}
 
 		return $this->make_success($post);
 	}
